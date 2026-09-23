@@ -9,7 +9,7 @@ const FOOTER_SERVICES: { label: string; filter?: Filter; href?: string }[] = [
   { label: 'Modern Kitchens', filter: 'kitchens' },
   { label: 'Wardrobes', filter: 'wardrobes' },
   { label: 'TV Panels', filter: 'tv-panels' },
-  { label: 'Curtains', href: '#services' },
+  { label: 'Curtains', filter: 'curtains' },
   { label: 'Sofas', filter: 'sofas' },
   { label: 'Interior Fit-Out', filter: 'installations' },
 ]
@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="container-lux relative">
         <Reveal className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo />
+            <Logo className="!h-20" />
             <p className="mt-6 max-w-xs font-serif text-2xl leading-snug text-white/85 italic">
               {SITE.message}
             </p>
@@ -87,8 +87,12 @@ export default function Footer() {
           </div>
         </Reveal>
 
+        <p className="mt-16 text-center text-[11px] font-bold tracking-[0.4em] text-gold/70 uppercase">
+          Making every room a masterpiece
+        </p>
+
         {/* Oversized wordmark */}
-        <div className="mt-20 overflow-hidden border-t border-white/[0.08] pt-10">
+        <div className="mt-6 overflow-hidden border-t border-white/[0.08] pt-10">
           <p
             aria-hidden
             className="display bg-gradient-to-b from-white/[0.14] to-white/0 bg-clip-text text-center text-[19vw] leading-[0.8] text-transparent select-none lg:text-[15vw]"

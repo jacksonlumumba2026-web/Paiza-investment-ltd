@@ -23,7 +23,7 @@ npm run preview   # preview the production build
 | Phone, WhatsApp, email, locations, Google Maps embed | `src/data/site.ts` |
 | The 8 services, descriptions, WhatsApp messages, showcase photos | `src/data/services.ts` |
 | Gallery photos, categories, order and alt text | `src/data/gallery.ts` |
-| Logo (placeholder wordmark) | `src/components/Logo.tsx`, `public/favicon.svg` |
+| Logo (vector recreation of the flyer logo; reference in `photos/brand/`) | `src/components/Logo.tsx`, `public/favicon.svg` |
 
 ### Adding photos
 
@@ -39,8 +39,10 @@ Paste the embed URL (Google Maps → Share → *Embed a map* → the iframe `src
 
 ## Photos not used on the site
 
-Listed in `scripts/optimize-images.mjs`:
+The full list is kept in `scripts/optimize-images.mjs`:
 
-- `0207`: phone screenshot of a social post
-- `0227`, `0228`: carry a third-party TikTok watermark (@bridgefurniture)
-- `0237`: collage duplicating `0235` and `0238`
+- **Third-party TikTok watermark (@bridgefurniture):** 0042, 0043, 0052, 0053, 0066, 0069, 0072, 0108, 0120, 0161, 0162, 0193, 0227, 0228
+- **Duplicates of a better or clean version:** 0022, 0024, 0034, 0048, 0061, 0062, 0074, 0106, 0110, 0165, 0167, 0237
+- **Not suitable:** 0125 (packaged mattress protector), 0180 (141×250 px), 0207 (phone screenshot)
+
+`0060` is cropped automatically to remove a screenshot border and a Google Lens button (see `CROP` in the same script).

@@ -5,7 +5,7 @@ import { useSite, type Filter } from '../context'
 import { IconExpand, IconPlus } from './icons'
 import { Accent, EASE, Reveal, SectionHeading } from './ui'
 
-const PAGE = 12
+const PAGE = 15
 
 function useColumns() {
   const get = () => (window.innerWidth >= 1024 ? 3 : 2)
@@ -67,7 +67,7 @@ export default function Gallery() {
           <Reveal className="shrink-0 lg:pb-3">
             <p className="text-sm text-ink/50">
               <span className="font-serif text-4xl text-ink italic">{list.length}</span>{' '}
-              {filter === 'all' ? 'real project photos' : `photos · ${categoryTitle(filter)}`}
+              {filter === 'all' ? 'project photos' : `photos · ${categoryTitle(filter)}`}
             </p>
           </Reveal>
         </div>
