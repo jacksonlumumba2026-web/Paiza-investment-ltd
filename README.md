@@ -16,6 +16,12 @@ npm run preview   # preview the production build
 
 `dist/` is fully static (relative paths), so it can be hosted on Netlify, Vercel, GitHub Pages, cPanel, etc.
 
+### GitHub Pages
+
+`.github/workflows/deploy.yml` builds the site and publishes `dist/` on every push to `main`.
+One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+If Pages is set to "Deploy from a branch", it serves the raw source code instead and the page shows blank white.
+
 ## Editing content
 
 | What | Where |
