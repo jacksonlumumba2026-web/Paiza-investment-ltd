@@ -1,36 +1,58 @@
 /**
- * Wordmark built from the Paiza brand colours (yellow roof, red accent).
- * Swap for the official logo file once supplied: drop it in /public and
- * replace this component's markup with an <img>.
+ * Vector recreation of the Paiza Investment Ltd logo (roof with chimney,
+ * red window, "Paiza" slab wordmark, red "INVESTMENT LTD").
+ * `light` is the gold-on-dark version used on the flyer's black badge.
  */
 export default function Logo({ light = true, className = '' }: { light?: boolean; className?: string }) {
-  const text = light ? 'text-white' : 'text-ink'
+  const main = light ? '#f5c518' : '#0d0c0b'
+  const red = light ? '#ff4a3d' : '#d7261e'
+
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <svg viewBox="0 0 64 64" className="h-10 w-10 shrink-0" aria-hidden>
-        <rect width="64" height="64" rx="14" className={light ? 'fill-white/10' : 'fill-ink'} />
-        <path
-          d="M12 30 32 13l20 17"
-          fill="none"
-          stroke="#f5c518"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M24 50V34h11a7 7 0 0 1 0 14h-11"
-          fill="none"
-          stroke="#fff"
-          strokeWidth="5.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="46" cy="49" r="3.5" fill="#e0301e" />
-      </svg>
-      <span className={`flex flex-col leading-none ${text}`}>
-        <span className="text-[19px] font-extrabold tracking-[0.18em]">PAIZA</span>
-        <span className="mt-1 text-[8.5px] font-bold tracking-[0.34em] opacity-60">INVESTMENT LTD</span>
-      </span>
-    </span>
+    <svg
+      viewBox="0 0 200 112"
+      className={`h-12 w-auto sm:h-[52px] ${className}`}
+      role="img"
+      aria-label="Paiza Investment Ltd"
+    >
+      {/* Roof with chimney */}
+      <path
+        d="M22 44 100 9l78 35"
+        fill="none"
+        stroke={main}
+        strokeWidth="7"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+      <path d="M131 23V6h10v22" fill="none" stroke={main} strokeWidth="6" strokeLinejoin="miter" />
+      {/* Window */}
+      <g fill={red}>
+        <rect x="93" y="19" width="6.5" height="6.5" />
+        <rect x="100.5" y="19" width="6.5" height="6.5" />
+        <rect x="93" y="26.5" width="6.5" height="6.5" />
+        <rect x="100.5" y="26.5" width="6.5" height="6.5" />
+      </g>
+      <text
+        x="100"
+        y="86"
+        textAnchor="middle"
+        textLength="178"
+        lengthAdjust="spacingAndGlyphs"
+        fill={main}
+        style={{ font: "800 60px 'Roboto Slab', Rockwell, Georgia, serif" }}
+      >
+        Paiza
+      </text>
+      <text
+        x="100"
+        y="108"
+        textAnchor="middle"
+        textLength="150"
+        lengthAdjust="spacingAndGlyphs"
+        fill={red}
+        style={{ font: "700 17px 'Manrope', system-ui, sans-serif", letterSpacing: '1px' }}
+      >
+        INVESTMENT LTD
+      </text>
+    </svg>
   )
 }

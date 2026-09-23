@@ -23,7 +23,7 @@ npm run preview   # preview the production build
 | Phone, WhatsApp, email, locations, Google Maps embed | `src/data/site.ts` |
 | The 8 services, descriptions, WhatsApp messages, showcase photos | `src/data/services.ts` |
 | Gallery photos, categories, order and alt text | `src/data/gallery.ts` |
-| Logo (placeholder wordmark) | `src/components/Logo.tsx`, `public/favicon.svg` |
+| Logo (vector recreation of the flyer logo; reference in `photos/brand/`) | `src/components/Logo.tsx`, `public/favicon.svg` |
 
 ### Adding photos
 
