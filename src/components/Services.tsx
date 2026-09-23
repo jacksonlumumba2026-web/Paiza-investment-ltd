@@ -43,7 +43,6 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             loading="lazy"
             width={cover.w}
             height={cover.h}
-            style={{ objectPosition: service.coverFocus }}
             className="h-full w-full object-cover transition-transform duration-[1.4s] ease-lux group-hover:scale-110"
           />
         ) : (

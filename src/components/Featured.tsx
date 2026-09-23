@@ -6,12 +6,12 @@ import { Accent, Reveal, SectionHeading, Stagger, fadeUp } from './ui'
 
 const FEATURED = [
   { id: '0214', label: 'Modern Kitchen', span: 'sm:col-span-2 lg:col-span-7 lg:row-span-2' },
-  { id: '0211', label: 'TV Panel', span: 'lg:col-span-5 lg:row-span-2' },
+  { id: '0192', label: 'Curtains & Sheers', span: 'lg:col-span-5 lg:row-span-2' },
   { id: '0243', label: 'Luxury Sofa', span: 'lg:col-span-4' },
-  { id: '0225', label: 'Recliner Sofa', span: 'lg:col-span-4' },
-  { id: '0221', label: 'Elegant Sofa', span: 'sm:col-span-2 lg:col-span-4' },
+  { id: '0160', label: 'Custom Wardrobe', span: 'lg:col-span-4' },
+  { id: '0225', label: 'Recliner Sofa', span: 'sm:col-span-2 lg:col-span-4' },
   { id: '0218', label: 'Modern Kitchen', span: 'lg:col-span-5' },
-  { id: '0244', label: 'Luxury Sofa', span: 'lg:col-span-7' },
+  { id: '0196', label: 'Elegant Sofa', span: 'lg:col-span-7' },
 ].map((f) => ({ ...f, photo: photoById(f.id) }))
 
 export default function Featured() {
@@ -29,7 +29,7 @@ export default function Featured() {
                 Spaces we’ve <Accent>transformed.</Accent>
               </>
             }
-            text="Making every room a masterpiece — a selection of kitchens, sofas and living spaces delivered by our team."
+            text="Making every room a masterpiece — a selection of kitchens, wardrobes, curtains and living spaces delivered by our team."
           />
           <Reveal className="shrink-0">
             <button type="button" onClick={() => showWork('all')} className="btn-outline-dark group">

@@ -10,10 +10,17 @@ const OUT = 'public/work'
 const SIZES = { sm: 720, lg: 1600 }
 
 // Kept out of the website:
-// 0207 – phone screenshot of a social post (low quality, UI chrome visible)
-// 0227, 0228 – carry a third-party TikTok watermark (@bridgefurniture)
-// 0237 – collage duplicating 0235 and 0238
-const EXCLUDE = new Set(['0207', '0227', '0228', '0237'])
+// Third-party TikTok watermark (@bridgefurniture):
+//   0053, 0066, 0120, 0161, 0162, 0193, 0227, 0228
+// Duplicates of a better/clean version: 0024 (0111), 0074 (0200), 0165 (0242),
+//   0167 (0243), 0237 (collage of 0235 + 0238)
+// Not suitable: 0125 (packaged mattress protector), 0180 (141×250px),
+//   0207 (phone screenshot of a social post)
+const EXCLUDE = new Set([
+  '0053', '0066', '0120', '0161', '0162', '0193', '0227', '0228',
+  '0024', '0074', '0165', '0167', '0237',
+  '0125', '0180', '0207',
+])
 
 await mkdir(OUT, { recursive: true })
 const files = (await readdir(SRC)).filter((f) => /\.(jpe?g|png)$/i.test(f)).sort()
