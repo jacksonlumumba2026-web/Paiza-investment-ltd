@@ -10,7 +10,7 @@ const FEATURED = [
   { id: '0243', label: 'Luxury Sofa', span: 'lg:col-span-4' },
   { id: '0160', label: 'Custom Wardrobe', span: 'lg:col-span-4' },
   { id: '0225', label: 'Recliner Sofa', span: 'sm:col-span-2 lg:col-span-4' },
-  { id: '0218', label: 'Modern Kitchen', span: 'lg:col-span-5' },
+  { id: '0030', label: 'Modern Kitchen', span: 'lg:col-span-5' },
   { id: '0196', label: 'Elegant Sofa', span: 'lg:col-span-7' },
 ].map((f) => ({ ...f, photo: photoById(f.id) }))
 
@@ -29,7 +29,7 @@ export default function Featured() {
                 Spaces we’ve <Accent>transformed.</Accent>
               </>
             }
-            text="Making every room a masterpiece — a selection of kitchens, wardrobes, curtains and living spaces delivered by our team."
+            text="Making every room a masterpiece — a selection of kitchens, wardrobes, curtains and living spaces by Paiza."
           />
           <Reveal className="shrink-0">
             <button type="button" onClick={() => showWork('all')} className="btn-outline-dark group">

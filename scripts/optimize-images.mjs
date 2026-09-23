@@ -9,16 +9,25 @@ const SRC = 'photos/originals'
 const OUT = 'public/work'
 const SIZES = { sm: 720, lg: 1600 }
 
+// Crops applied before resizing (pixels in the original file).
+// 0060 – screenshot: trims the grey border and the Google Lens button.
+const CROP = {
+  '0060': { left: 142, top: 36, width: 688, height: 1228 },
+}
+
 // Kept out of the website:
 // Third-party TikTok watermark (@bridgefurniture):
-//   0053, 0066, 0120, 0161, 0162, 0193, 0227, 0228
-// Duplicates of a better/clean version: 0024 (0111), 0074 (0200), 0165 (0242),
-//   0167 (0243), 0237 (collage of 0235 + 0238)
+//   0042, 0043, 0052, 0053, 0066, 0069, 0072, 0108, 0120, 0161, 0162, 0193, 0227, 0228
+// Duplicates of a better/clean version: 0022 (0151), 0024 (0111), 0034 (0185),
+//   0048 (0063), 0061 (0233), 0062 (0244), 0074 (0200), 0106 (0232), 0110 (0241),
+//   0165 (0242), 0167 (0243), 0237 (collage of 0235 + 0238)
 // Not suitable: 0125 (packaged mattress protector), 0180 (141×250px),
 //   0207 (phone screenshot of a social post)
 const EXCLUDE = new Set([
-  '0053', '0066', '0120', '0161', '0162', '0193', '0227', '0228',
-  '0024', '0074', '0165', '0167', '0237',
+  '0042', '0043', '0052', '0053', '0066', '0069', '0072', '0108',
+  '0120', '0161', '0162', '0193', '0227', '0228',
+  '0022', '0024', '0034', '0048', '0061', '0062', '0074', '0106', '0110',
+  '0165', '0167', '0237',
   '0125', '0180', '0207',
 ])
 
@@ -29,7 +38,8 @@ const meta = {}
 for (const file of files) {
   const id = file.match(/WA(\d+)/)?.[1] ?? path.parse(file).name
   if (EXCLUDE.has(id)) continue
-  const base = sharp(path.join(SRC, file)).rotate()
+  let base = sharp(path.join(SRC, file)).rotate()
+  if (CROP[id]) base = sharp(await base.extract(CROP[id]).toBuffer())
   const { width, height } = await base.metadata()
   for (const [suffix, w] of Object.entries(SIZES)) {
     await base

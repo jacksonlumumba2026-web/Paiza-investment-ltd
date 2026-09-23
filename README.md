@@ -41,6 +41,8 @@ Paste the embed URL (Google Maps → Share → *Embed a map* → the iframe `src
 
 The full list is kept in `scripts/optimize-images.mjs`:
 
-- **Third-party TikTok watermark (@bridgefurniture):** 0053, 0066, 0120, 0161, 0162, 0193, 0227, 0228
-- **Duplicates of a better or clean version:** 0024, 0074, 0165, 0167, 0237
+- **Third-party TikTok watermark (@bridgefurniture):** 0042, 0043, 0052, 0053, 0066, 0069, 0072, 0108, 0120, 0161, 0162, 0193, 0227, 0228
+- **Duplicates of a better or clean version:** 0022, 0024, 0034, 0048, 0061, 0062, 0074, 0106, 0110, 0165, 0167, 0237
 - **Not suitable:** 0125 (packaged mattress protector), 0180 (141×250 px), 0207 (phone screenshot)
+
+`0060` is cropped automatically to remove a screenshot border and a Google Lens button (see `CROP` in the same script).

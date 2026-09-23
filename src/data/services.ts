@@ -26,7 +26,7 @@ export const SERVICES: Service[] = [
     message: quote('Modern Kitchen Design'),
     category: 'kitchens',
     cover: '0214',
-    showcase: ['0214', '0218', '0073', '0206', '0188', '0204'],
+    showcase: ['0214', '0030', '0218', '0039', '0023', '0064'],
     galleryLabel: 'View all kitchen projects',
   },
   {
@@ -37,7 +37,7 @@ export const SERVICES: Service[] = [
     message: quote('Modern Wardrobes'),
     category: 'wardrobes',
     cover: '0129',
-    showcase: ['0129', '0160', '0132', '0117', '0164', '0137'],
+    showcase: ['0129', '0160', '0032', '0132', '0117', '0137'],
     galleryLabel: 'View all wardrobe projects',
   },
   {
@@ -59,7 +59,7 @@ export const SERVICES: Service[] = [
     message: quote('Modern TV Panel Designs'),
     category: 'tv-panels',
     cover: '0200',
-    showcase: ['0200', '0199', '0059', '0126', '0211', '0173'],
+    showcase: ['0200', '0027', '0046', '0199', '0037', '0060'],
     galleryLabel: 'View all TV panel projects',
   },
   {
@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     message: quote('your sofa designs'),
     category: 'sofas',
     cover: '0221',
-    showcase: ['0221', '0196', '0146', '0212', '0174', '0148'],
+    showcase: ['0221', '0196', '0056', '0058', '0146', '0057'],
     galleryLabel: 'View all sofa designs',
   },
   {
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
     message: quote('Artic Sofa Design (Arabic Design)'),
     category: 'arabic',
     cover: '0243',
-    showcase: ['0243', '0121', '0241', '0063', '0244', '0185'],
+    showcase: ['0243', '0121', '0033', '0241', '0063', '0185'],
     galleryLabel: 'View all Arabic designs',
   },
 ]

@@ -63,13 +63,24 @@ const group = (cat: CategoryId, entries: Entry[]): Photo[] =>
  */
 const KITCHENS = group('kitchens', [
   ['0214', 'Open-plan kitchen with dark stone island, timber cabinetry and warm downlights'],
+  ['0030', 'Marble waterfall island kitchen with bar seating and warm cove lighting'],
+  ['0039', 'Cream L-shaped kitchen with lit glass display cabinets'],
   ['0218', 'L-shaped timber kitchen with glass-front wall units and a stone island'],
   ['0073', 'Two-tone kitchen with white island, grey units and dark worktop'],
+  ['0023', 'Taupe and walnut kitchen with lit glass pantry and cove ceiling'],
+  ['0038', 'Charcoal and walnut kitchen with breakfast island'],
+  ['0026', 'Cream kitchen with open lit shelving and integrated fridge'],
+  ['0036', 'Taupe kitchen with long island and integrated appliances'],
   ['0206', 'Kitchen island with black sintered-stone top and timber panelling'],
   ['0188', 'Sage and walnut kitchen with glass splashback'],
   ['0183', 'Green and walnut kitchen with hexagon-tile splashback'],
+  ['0040', 'Cream fitted kitchen with tall appliance wall and lit spice shelves'],
+  ['0055', 'Charcoal kitchen with open walnut shelving'],
+  ['0028', 'Warm grey L-shaped kitchen with open shelving'],
+  ['0031', 'Oak and cream compact kitchen with built-in ovens'],
   ['0216', 'Grey high-gloss kitchen with black glass splashback'],
   ['0204', 'Timber kitchen with stone island and chimney hood'],
+  ['0064', 'Timber kitchen with stone island and glossy grey wall units'],
   ['0203', 'Timber kitchen with glass-front wall units and built-in oven'],
   ['0205', 'Grey gloss kitchen with chimney hood and warm under-cabinet lighting'],
   ['0208', 'Modern kitchen with black splashback, chimney hood and integrated appliances'],
@@ -85,6 +96,7 @@ const KITCHENS = group('kitchens', [
 const CURTAINS = group('curtains', [
   ['0192', 'Floor-to-ceiling wave curtains and sheers in a living room'],
   ['0198', 'Wave curtains and sheers beside a dining area'],
+  ['0109', 'Grey patterned curtains with white sheer'],
   ['0184', 'Brown eyelet curtains with linen sheer'],
   ['0136', 'Deep red curtains with white sheer'],
   ['0112', 'Emerald curtains with embroidered white sheer and pearl tie-back'],
@@ -116,10 +128,17 @@ const CURTAINS = group('curtains', [
 const SOFAS = group('sofas', [
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
+  ['0056', 'Curved cream boucle sofa'],
+  ['0058', 'Terracotta leather chaise sectional'],
+  ['0057', 'Taupe sofa set with red accent cushions'],
   ['0146', 'Grey L-shaped sectional with nested coffee tables'],
   ['0212', 'White fabric chaise sectional with a dark coffee table'],
   ['0174', 'White sofa set with gold coffee table'],
   ['0148', 'Mocha fabric sofa set in the showroom'],
+  ['0018', 'Cream and white sofa collection in the showroom'],
+  ['0070', 'Cream two-seater sofa with patterned cushions and throw'],
+  ['0047', 'Black leather sofa set in the showroom'],
+  ['0045', 'Grey sofa bed opened out'],
   ['0091', 'Grey fabric sofa set arranged around a white coffee table'],
   ['0222', 'Camel sectional sofa with grey accent cushions'],
   ['0210', 'Brown suede corner sofa in a family living room'],
@@ -144,6 +163,7 @@ const SOFAS = group('sofas', [
 const WARDROBES = group('wardrobes', [
   ['0129', 'Floor-to-ceiling taupe wardrobe with mirror door and drawers'],
   ['0160', 'White fitted wardrobes with walk-in opening'],
+  ['0032', 'Floor-to-ceiling cream wardrobe in a bedroom'],
   ['0132', 'Fitted bedroom wardrobe with built-in dressing table'],
   ['0117', 'Cream fitted wardrobe with integrated study desk and lit shelving'],
   ['0164', 'White fitted wardrobe with internal drawers'],
@@ -159,6 +179,7 @@ const WARDROBES = group('wardrobes', [
 const ARABIC = group('arabic', [
   ['0243', 'Arabic-style velvet sofa set with gold trim and a round coffee table'],
   ['0121', 'Royal-style cream sofa set with carved frames and black coffee table'],
+  ['0033', 'Royal-style sofa set with carved white coffee tables'],
   ['0241', 'Grey tufted Arabic-design sofa and matching armchair with gold detailing'],
   ['0063', 'Royal-style loveseat with carved dark-wood frame and damask cushions'],
   ['0244', 'Emerald and cream Arabic-style living room sofa set'],
@@ -167,22 +188,31 @@ const ARABIC = group('arabic', [
   ['0242', 'Champagne Arabic-style sofa set with gold-accented base'],
   ['0172', 'Royal-style ivory loveseat with carved frame'],
   ['0171', 'Royal-style carved white armchair with embroidered cushion'],
+  ['0067', 'Royal-style ivory loveseat with floral cushions'],
+  ['0050', 'Royal-style white armchair with embroidered cushion'],
+  ['0035', 'Royal-style black and gold coffee tables with sofa'],
   ['0124', 'Royal-style white dining set with carved chairs'],
 ])
 
 const TV_PANELS = group('tv-panels', [
   ['0211', 'Marble-effect TV wall panel with lit display shelving under a gypsum ceiling', ['gypsum']],
+  ['0027', 'Marble and walnut TV wall with lit display shelving'],
+  ['0046', 'Black fluted TV wall with backlit marble panel'],
   ['0199', 'Curved TV wall with lit niches and floating unit'],
+  ['0037', 'Light fluted TV wall with floating unit and bookshelf'],
+  ['0060', 'Fluted timber TV wall with lit shelving'],
   ['0059', 'TV wall with gypsum ceiling cove lighting and lit display niches', ['gypsum']],
   ['0200', 'Marble-effect TV wall panel with lit display shelving'],
   ['0126', 'Minimal TV wall with fluted panel and lit shelving under a gypsum ceiling', ['gypsum']],
   ['0173', 'Fluted feature wall and floating TV unit being fitted', ['installations']],
+  ['0065', 'Fluted wall panel and lit glass display unit being fitted', ['installations']],
   ['0220', 'Fluted wall panel and floating unit being measured during fitting', ['installations']],
 ])
 
 const RECLINERS = group('recliners', [
   ['0225', 'Three-piece leather-look recliner set in a bright living room'],
   ['0142', 'Grey recliner sofa set with swivel armchair'],
+  ['0071', 'Charcoal recliner sofa set'],
   ['0139', 'Charcoal leather recliner set in the showroom'],
   ['0123', 'Taupe recliner sofa set on a marble-print rug'],
   ['0230', 'Charcoal recliner sofa with patterned cushions'],
@@ -196,6 +226,7 @@ const GYPSUM = group('gypsum', [
   ['0131', 'Living room with gypsum tray ceiling, chandelier and TV wall', ['tv-panels']],
   ['0134', 'Layered gypsum ceiling with cove lighting and chandelier'],
   ['0140', 'Grand living room with gypsum ceiling, chandelier and feature TV wall', ['tv-panels']],
+  ['0029', 'Bedroom with panelled feature wall and gypsum cove ceiling'],
   ['0150', 'Gypsum ceiling with LED line lighting and pendant'],
 ])
 
