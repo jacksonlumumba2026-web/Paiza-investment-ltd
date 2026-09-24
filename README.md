@@ -22,6 +22,25 @@ npm run preview   # preview the production build
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 If Pages is set to "Deploy from a branch", it serves the raw source code instead and the page shows blank white.
 
+### Custom domain: paiza-investment.co.ke
+
+Registered at Truehost. DNS records (Truehost client area → Domains → Manage → DNS management):
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
+| CNAME | `www` | `jacksonlumumba2026-web.github.io` |
+
+Then **Settings → Pages → Custom domain** → `paiza-investment.co.ke` → Save, and tick **Enforce HTTPS** once it's offered.
+The domain is also written in `index.html` (canonical, link-preview and business tags), `public/robots.txt` and `public/sitemap.xml`.
+
 ## Editing content
 
 | What | Where |

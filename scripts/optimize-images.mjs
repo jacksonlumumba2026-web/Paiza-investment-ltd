@@ -60,5 +60,12 @@ for (const file of files) {
   meta[id] = { w: width, h: height }
 }
 
+// 1200×630 JPEG for link previews (WhatsApp, Facebook, Meta ads). Crawlers need JPEG/PNG.
+await sharp(path.join(SRC, 'IMG-20260923-WA0214.jpg'))
+  .rotate()
+  .resize(1200, 630, { fit: 'cover', position: 'centre' })
+  .jpeg({ quality: 82, mozjpeg: true })
+  .toFile('public/og-image.jpg')
+
 await writeFile('src/data/image-meta.json', JSON.stringify(meta, null, 2) + '\n')
 console.log(`Optimised ${Object.keys(meta).length} images → ${OUT}`)
