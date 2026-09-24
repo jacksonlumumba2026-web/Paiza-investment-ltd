@@ -10,6 +10,7 @@ const FOOTER_SERVICES: { label: string; filter?: Filter; href?: string }[] = [
   { label: 'Wardrobes', filter: 'wardrobes' },
   { label: 'TV Panels', filter: 'tv-panels' },
   { label: 'Curtains', filter: 'curtains' },
+  { label: 'Rods & Rails', filter: 'rods' },
   { label: 'Sofas', filter: 'sofas' },
   { label: 'Interior Fit-Out', filter: 'installations' },
 ]

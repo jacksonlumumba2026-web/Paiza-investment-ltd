@@ -29,6 +29,12 @@ const EXCLUDE = new Set([
   '0022', '0024', '0034', '0048', '0061', '0062', '0074', '0106', '0110',
   '0165', '0167', '0237',
   '0125', '0180', '0207',
+  // 24 Sept batch — re-sends of photos already on the site: 24-0012 (0171),
+  // 24-0013 (0157), 24-0017 (0124), 24-0018 (0151), 24-0019 (0139), 24-0020 (0063),
+  // 24-0023 (0067), 24-0028 (0185), 24-0029 (0121), 24-0031 (0018);
+  // 24-0027 phone screenshot (= 0207); 24-0014 @bridgefurniture watermark.
+  '24-0012', '24-0013', '24-0017', '24-0018', '24-0019', '24-0020',
+  '24-0023', '24-0028', '24-0029', '24-0031', '24-0027', '24-0014',
 ])
 
 await mkdir(OUT, { recursive: true })
@@ -36,7 +42,10 @@ const files = (await readdir(SRC)).filter((f) => /\.(jpe?g|png)$/i.test(f)).sort
 const meta = {}
 
 for (const file of files) {
-  const id = file.match(/WA(\d+)/)?.[1] ?? path.parse(file).name
+  // IMG-20260923-WA0214.jpg → "0214". WhatsApp restarts its numbering each day,
+  // so photos from any other day keep the day: IMG-20260924-WA0012.jpg → "24-0012".
+  const m = file.match(/IMG-(\d{8})-WA(\d+)/)
+  const id = !m ? path.parse(file).name : m[1] === '20260923' ? m[2] : `${m[1].slice(6)}-${m[2]}`
   if (EXCLUDE.has(id)) continue
   let base = sharp(path.join(SRC, file)).rotate()
   if (CROP[id]) base = sharp(await base.extract(CROP[id]).toBuffer())

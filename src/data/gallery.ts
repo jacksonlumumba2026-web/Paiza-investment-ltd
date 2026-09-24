@@ -6,6 +6,7 @@ export type CategoryId =
   | 'gypsum'
   | 'tv-panels'
   | 'curtains'
+  | 'rods'
   | 'recliners'
   | 'sofas'
   | 'arabic'
@@ -18,6 +19,7 @@ export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
   { id: 'gypsum', label: 'Gypsum', title: 'Gypsum Design Works' },
   { id: 'tv-panels', label: 'TV Panels', title: 'TV Panel Designs' },
   { id: 'curtains', label: 'Curtains', title: 'Curtains & Sheers' },
+  { id: 'rods', label: 'Rods & Rails', title: 'Curtain Rods & Rails' },
   { id: 'recliners', label: 'Recliners', title: 'Recliner Sofas' },
   { id: 'sofas', label: 'Sofas', title: 'Elegant Sofas' },
   { id: 'arabic', label: 'Arabic Designs', title: 'Arabic Sofa Designs' },
@@ -31,6 +33,8 @@ export const categoryTitle = (id: CategoryId | 'all') =>
 export type Photo = {
   id: string
   alt: string
+  /** Product/model name from the client, e.g. "Rixos". */
+  name?: string
   cats: CategoryId[]
   w: number
   h: number
@@ -40,15 +44,16 @@ export type Photo = {
 
 const dims = meta as Record<string, { w: number; h: number }>
 
-/** [photo id, alt text, extra categories] — the group's category is always first. */
-type Entry = [id: string, alt: string, extra?: CategoryId[]]
+/** [photo id, alt text, extra categories, model name] — the group's category is always first. */
+type Entry = [id: string, alt: string, extra?: CategoryId[], name?: string]
 
 const group = (cat: CategoryId, entries: Entry[]): Photo[] =>
-  entries.map(([id, alt, extra = []]) => {
+  entries.map(([id, alt, extra = [], name]) => {
     if (!dims[id]) throw new Error(`Photo ${id} is missing — run "npm run images"`)
     return {
       id,
-      alt,
+      alt: name ? `${name} — ${alt}` : alt,
+      name,
       cats: [cat, ...extra],
       w: dims[id].w,
       h: dims[id].h,
@@ -129,6 +134,7 @@ const SOFAS = group('sofas', [
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
   ['0056', 'Curved cream boucle sofa'],
+  ['0100', 'Taupe sofa set with timber side frames'],
   ['0058', 'Terracotta leather chaise sectional'],
   ['0057', 'Taupe sofa set with red accent cushions'],
   ['0146', 'Grey L-shaped sectional with nested coffee tables'],
@@ -136,6 +142,8 @@ const SOFAS = group('sofas', [
   ['0174', 'White sofa set with gold coffee table'],
   ['0148', 'Mocha fabric sofa set in the showroom'],
   ['0018', 'Cream and white sofa collection in the showroom'],
+  ['24-0026', 'Grey and teal fabric sofas in the showroom'],
+  ['24-0021', 'Light grey sofa collection in the showroom'],
   ['0070', 'Cream two-seater sofa with patterned cushions and throw'],
   ['0047', 'Black leather sofa set in the showroom'],
   ['0045', 'Grey sofa bed opened out'],
@@ -176,21 +184,28 @@ const WARDROBES = group('wardrobes', [
   ['0115', 'Built-in white wardrobe being fitted on site', ['installations']],
 ])
 
+// Royal and Arabic-design sofas are also listed under Sofas, as the client asked.
 const ARABIC = group('arabic', [
-  ['0243', 'Arabic-style velvet sofa set with gold trim and a round coffee table'],
-  ['0121', 'Royal-style cream sofa set with carved frames and black coffee table'],
-  ['0033', 'Royal-style sofa set with carved white coffee tables'],
-  ['0241', 'Grey tufted Arabic-design sofa and matching armchair with gold detailing'],
-  ['0063', 'Royal-style loveseat with carved dark-wood frame and damask cushions'],
-  ['0244', 'Emerald and cream Arabic-style living room sofa set'],
-  ['0157', 'Arabic-style sofa set with gold-trimmed arms'],
-  ['0185', 'Royal-style armchair in grey leather with carved mahogany frame'],
-  ['0242', 'Champagne Arabic-style sofa set with gold-accented base'],
-  ['0172', 'Royal-style ivory loveseat with carved frame'],
-  ['0171', 'Royal-style carved white armchair with embroidered cushion'],
-  ['0067', 'Royal-style ivory loveseat with floral cushions'],
-  ['0050', 'Royal-style white armchair with embroidered cushion'],
-  ['0035', 'Royal-style black and gold coffee tables with sofa'],
+  ['0243', 'Arabic-style velvet sofa set with gold trim and a round coffee table', ['sofas'], 'Rixos'],
+  ['0121', 'Royal-style cream sofa set with carved frames and black coffee table', ['sofas']],
+  ['24-0025', 'Royal-style champagne loveseat with carved mahogany frame', ['sofas']],
+  ['0242', 'Champagne Arabic-style sofa set with gold-accented base', ['sofas'], 'Romance'],
+  ['24-0016', 'Royal-style ivory and gold sofa set', ['sofas']],
+  ['0033', 'Royal-style sofa set with carved white coffee tables', ['sofas']],
+  ['0241', 'Grey tufted Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
+  ['0099', 'Royal-style grey loveseat with carved black frame and gold cushions', ['sofas']],
+  ['0244', 'Emerald and cream Arabic-style living room sofa set', ['sofas'], 'Nevada Sofa Bed'],
+  ['24-0030', 'Royal-style grey velvet loveseat with carved black and gold frame', ['sofas']],
+  ['0063', 'Royal-style loveseat with carved dark-wood frame and damask cushions', ['sofas']],
+  ['24-0024', 'Royal-style powder-blue sofa set with carved white frames', ['sofas']],
+  ['24-0022', 'Royal-style mint loveseat with carved white frame', ['sofas']],
+  ['0157', 'Arabic-style sofa set with gold-trimmed arms', ['sofas']],
+  ['0185', 'Royal-style armchair in grey leather with carved mahogany frame', ['sofas']],
+  ['0172', 'Royal-style ivory loveseat with carved frame', ['sofas']],
+  ['0171', 'Royal-style carved white armchair with embroidered cushion', ['sofas']],
+  ['0067', 'Royal-style ivory loveseat with floral cushions', ['sofas']],
+  ['0050', 'Royal-style white armchair with embroidered cushion', ['sofas']],
+  ['0035', 'Royal-style black and gold coffee tables with sofa', ['sofas']],
   ['0124', 'Royal-style white dining set with carved chairs'],
 ])
 
@@ -212,6 +227,7 @@ const TV_PANELS = group('tv-panels', [
 const RECLINERS = group('recliners', [
   ['0225', 'Three-piece leather-look recliner set in a bright living room'],
   ['0142', 'Grey recliner sofa set with swivel armchair'],
+  ['24-0015', 'Taupe corner recliner sectional with footrests extended'],
   ['0071', 'Charcoal recliner sofa set'],
   ['0139', 'Charcoal leather recliner set in the showroom'],
   ['0123', 'Taupe recliner sofa set on a marble-print rug'],
@@ -228,6 +244,19 @@ const GYPSUM = group('gypsum', [
   ['0140', 'Grand living room with gypsum ceiling, chandelier and feature TV wall', ['tv-panels']],
   ['0029', 'Bedroom with panelled feature wall and gypsum cove ceiling'],
   ['0150', 'Gypsum ceiling with LED line lighting and pendant'],
+])
+
+const RODS = group('rods', [
+  ['0020', 'Copper curtain rod with ornate finials, brackets and tie-back hooks'],
+  ['0021', 'Antique brass curtain rod set with finials, rings and brackets'],
+  ['0019', 'Matte black double curtain rod with ball finials'],
+  ['24-0034', 'Ceiling curtain track being installed', ['installations']],
+  ['24-0032', 'Recessed ceiling curtain track above a window'],
+  ['24-0033', 'Ceiling curtain track fitted along a gypsum recess'],
+  ['0013', 'WR366 nano double curtain track with colour options'],
+  ['24-0037', 'B59 nano square curtain track with runners'],
+  ['24-0036', 'M05 one-line centre-bend curtain track'],
+  ['24-0035', 'White double curtain track section'],
 ])
 
 const OFFICE = group('office', [
@@ -252,7 +281,7 @@ function interleave(groups: Photo[][]) {
 }
 
 export const PHOTOS: Photo[] = [
-  ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, ARABIC, TV_PANELS, RECLINERS, GYPSUM]),
+  ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, ARABIC, TV_PANELS, RECLINERS, GYPSUM, RODS]),
   ...OFFICE,
 ]
 

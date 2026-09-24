@@ -136,7 +136,12 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
 
           {/* Bottom bar */}
           <div className="flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
-            <p className="max-w-xl text-sm text-white/55">{photo.alt}</p>
+            <div className="max-w-xl">
+              {photo.name && (
+                <p className="text-lg font-extrabold tracking-[0.12em] text-white uppercase">{photo.name}</p>
+              )}
+              <p className="text-sm text-white/55">{photo.name ? photo.alt.replace(`${photo.name} — `, '') : photo.alt}</p>
+            </div>
             <div className="flex items-center gap-3">
               {total > 1 && (
                 <div className="flex gap-2 sm:hidden">
@@ -160,9 +165,9 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
               )}
               <a
                 href={waLink(
-                  `Hello Paiza Investment Ltd, I saw this design on your website (${categoryTitle(
-                    photo.cats[0],
-                  )}, photo ${photo.id}). I would like to get more information and a quotation.`,
+                  `Hello Paiza Investment Ltd, I saw this design on your website (${
+                    photo.name ? `${photo.name}, ` : ''
+                  }${categoryTitle(photo.cats[0])}, photo ${photo.id}). I would like to get more information and a quotation.`,
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
