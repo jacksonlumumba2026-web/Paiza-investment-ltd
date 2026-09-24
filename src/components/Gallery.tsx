@@ -131,10 +131,15 @@ export default function Gallery() {
                       height={photo.h}
                       className="h-full w-full object-cover transition-transform duration-[1.4s] ease-lux group-hover:scale-[1.06]"
                     />
+                    {photo.name && (
+                      <span className="absolute top-3 left-3 rounded-full bg-ink/75 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-gold uppercase backdrop-blur sm:top-4 sm:left-4">
+                        {photo.name}
+                      </span>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute inset-x-0 bottom-0 hidden translate-y-3 items-end justify-between gap-3 p-5 opacity-0 sm:flex transition-all duration-500 ease-lux group-hover:translate-y-0 group-hover:opacity-100">
                       <span className="text-[11px] font-bold tracking-[0.18em] text-white uppercase">
-                        {categoryTitle(photo.cats[0])}
+                        {photo.name ?? categoryTitle(photo.cats[0])}
                       </span>
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-ink">
                         <IconExpand className="h-4 w-4" />

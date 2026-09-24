@@ -35,9 +35,14 @@ If Pages is set to "Deploy from a branch", it serves the raw source code instead
 
 1. Drop the new originals into `photos/originals/`.
 2. Run `npm run images`. This creates optimised WebP files (`public/work/<id>-sm.webp` and `-lg.webp`) and updates `src/data/image-meta.json`.
-3. Add a `photo('<id>', ['category'], 'description')` line in `src/data/gallery.ts`.
+3. Add an `['<id>', 'description']` entry to the right group in `src/data/gallery.ts`.
 
 The photo id is the number after `WA` in the WhatsApp filename (e.g. `IMG-20260923-WA0214.jpg` → `0214`).
+WhatsApp restarts its numbering each day, so photos from any other day keep the day in their id
+(e.g. `IMG-20260924-WA0012.jpg` → `24-0012`).
+
+A product or model name (e.g. "Rixos") can be given as the 4th value of a gallery entry. It shows as a label
+on the photo, in the full-screen viewer and in the WhatsApp enquiry.
 
 ### Google Maps
 
@@ -49,6 +54,7 @@ The full list is kept in `scripts/optimize-images.mjs`:
 
 - **Third-party TikTok watermark (@bridgefurniture):** 0042, 0043, 0052, 0053, 0066, 0069, 0072, 0108, 0120, 0161, 0162, 0193, 0227, 0228
 - **Duplicates of a better or clean version:** 0022, 0024, 0034, 0048, 0061, 0062, 0074, 0106, 0110, 0165, 0167, 0237
-- **Not suitable:** 0125 (packaged mattress protector), 0180 (141×250 px), 0207 (phone screenshot)
+- **Not suitable:** 0125 (packaged mattress protector), 0180 (141×250 px), 0207 and 24-0027 (phone screenshots)
+- **24 Sept re-sends of photos already on the site:** 24-0012, 24-0013, 24-0017, 24-0018, 24-0019, 24-0020, 24-0023, 24-0028, 24-0029, 24-0031 (24-0014 also carries the @bridgefurniture watermark)
 
 `0060` is cropped automatically to remove a screenshot border and a Google Lens button (see `CROP` in the same script).

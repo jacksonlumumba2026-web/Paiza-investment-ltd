@@ -66,12 +66,12 @@ export const SERVICES: Service[] = [
     id: 'curtains',
     name: 'Curtains & Sheers',
     description:
-      'Tailored curtains and soft sheers that control light, add privacy and complete the mood of your space.',
+      'Tailored curtains and soft sheers, plus curtain rods, rails and ceiling tracks — supplied and fitted to complete every window.',
     message:
       'Hello Paiza Investment Ltd, I am interested in Curtains & Sheers. I would like to get more information.',
     category: 'curtains',
     cover: '0192',
-    showcase: ['0192', '0198', '0184', '0136', '0112', '0144'],
+    showcase: ['0192', '0198', '0020', '0184', '24-0034', '0136'],
     galleryLabel: 'View all curtain projects',
   },
   {
@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     message: quote('your sofa designs'),
     category: 'sofas',
     cover: '0221',
-    showcase: ['0221', '0196', '0056', '0058', '0146', '0057'],
+    showcase: ['0221', '24-0025', '0196', '0243', '0056', '0099'],
     galleryLabel: 'View all sofa designs',
   },
   {
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
     message: quote('Artic Sofa Design (Arabic Design)'),
     category: 'arabic',
     cover: '0243',
-    showcase: ['0243', '0121', '0033', '0241', '0063', '0185'],
+    showcase: ['0243', '24-0025', '0121', '24-0016', '0241', '0099'],
     galleryLabel: 'View all Arabic designs',
   },
 ]
@@ -115,6 +115,7 @@ export const SERVICE_OPTIONS = [
   'Gypsum Design Works',
   'Modern TV Panel Designs',
   'Curtains & Sheers',
+  'Curtain Rods & Rails',
   'Recliner Sofas',
   'Elegant Sofa Designs',
   'Artic Sofa Design',
