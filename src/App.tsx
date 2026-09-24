@@ -1,5 +1,5 @@
 import { MotionConfig } from 'framer-motion'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import About from './components/About'
 import Contact from './components/Contact'
 import FAQ from './components/FAQ'
@@ -18,7 +18,7 @@ import ServiceShowcase from './components/ServiceShowcase'
 import TrustBar from './components/TrustBar'
 import WhyChoose from './components/WhyChoose'
 import { SiteContext, type Filter } from './context'
-import type { Photo } from './data/gallery'
+import { CATEGORIES, type Photo } from './data/gallery'
 
 export default function App() {
   const [filter, setFilter] = useState<Filter>('all')
@@ -27,6 +27,23 @@ export default function App() {
   const showWork = useCallback((f: Filter = 'all') => {
     setFilter(f)
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
+  // Category links, e.g. paiza-investment.co.ke/#kitchens, open "Our Work" already filtered
+  // (used in the WhatsApp Business greeting message and in ads).
+  useEffect(() => {
+    const applyHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1))
+      const category = CATEGORIES.find((c) => c.id === id)
+      if (!category) return
+      setFilter(category.id)
+      const scroll = () => document.getElementById('work')?.scrollIntoView({ block: 'start' })
+      requestAnimationFrame(scroll)
+      setTimeout(scroll, 600) // again once images and fonts above have settled
+    }
+    applyHash()
+    window.addEventListener('hashchange', applyHash)
+    return () => window.removeEventListener('hashchange', applyHash)
   }, [])
 
   const openLightbox = useCallback(

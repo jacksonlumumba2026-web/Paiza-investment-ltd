@@ -76,6 +76,12 @@ WhatsApp restarts its numbering each day, so photos from any other day keep the 
 A product or model name (e.g. "Rixos") can be given as the 4th value of a gallery entry. It shows as a label
 on the photo, in the full-screen viewer and in the WhatsApp enquiry.
 
+### Category links
+
+`https://paiza-investment.co.ke/#<category>` opens "Our Work" already filtered, for WhatsApp greetings and ads:
+`#kitchens`, `#wardrobes`, `#gypsum`, `#tv-panels`, `#curtains`, `#rods`, `#recliners`, `#sofas`, `#arabic`,
+`#office`, `#installations` (ids from `CATEGORIES` in `src/data/gallery.ts`).
+
 ### Google Maps
 
 Paste the embed URL (Google Maps → Share → *Embed a map* → the iframe `src`) into `mapEmbedUrl` in `src/data/site.ts`. You can also set `mapShareUrl` for the "Get directions" button. Until then, a styled placeholder is shown.
