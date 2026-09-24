@@ -61,7 +61,7 @@ export default function Hero() {
               <motion.span {...line(0.35)} className="block">
                 Designing Spaces,
               </motion.span>
-            </span>
+            </span>{' '}
             <span className="block overflow-hidden pb-3">
               <motion.span {...line(0.5)} className="block">
                 <Accent>Elevating</Accent> Lifestyles<span className="text-gold">.</span>

@@ -67,5 +67,9 @@ await sharp(path.join(SRC, 'IMG-20260923-WA0214.jpg'))
   .jpeg({ quality: 82, mozjpeg: true })
   .toFile('public/og-image.jpg')
 
+// PNG icons from the SVG favicon: home-screen icon and the logo Google shows for the business.
+await sharp('public/favicon.svg', { density: 600 }).resize(180, 180).png().toFile('public/apple-touch-icon.png')
+await sharp('public/favicon.svg', { density: 600 }).resize(512, 512).png().toFile('public/logo-512.png')
+
 await writeFile('src/data/image-meta.json', JSON.stringify(meta, null, 2) + '\n')
 console.log(`Optimised ${Object.keys(meta).length} images → ${OUT}`)

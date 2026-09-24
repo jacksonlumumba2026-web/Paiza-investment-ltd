@@ -2,6 +2,7 @@ import { MotionConfig } from 'framer-motion'
 import { useCallback, useMemo, useState } from 'react'
 import About from './components/About'
 import Contact from './components/Contact'
+import FAQ from './components/FAQ'
 import Featured from './components/Featured'
 import FinalCTA from './components/FinalCTA'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
@@ -54,6 +55,7 @@ export default function App() {
           <WhyChoose />
           <Process />
           <Gallery />
+          <FAQ />
           <FinalCTA />
           <Contact />
         </main>

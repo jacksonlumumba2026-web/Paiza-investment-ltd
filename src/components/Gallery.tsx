@@ -8,10 +8,12 @@ import { Accent, EASE, Reveal, SectionHeading } from './ui'
 const PAGE = 15
 
 function useColumns() {
-  const get = () => (window.innerWidth >= 1024 ? 3 : 2)
-  const [cols, setCols] = useState(get)
+  // Starts at 3 so the pre-rendered HTML matches the first client render,
+  // then adjusts to the real screen width.
+  const [cols, setCols] = useState(3)
   useEffect(() => {
-    const onResize = () => setCols(get())
+    const onResize = () => setCols(window.innerWidth >= 1024 ? 3 : 2)
+    onResize()
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
