@@ -7,7 +7,7 @@ import { IconArrowUpRight, IconWhatsApp } from './icons'
 import { Accent, SectionHeading, Stagger, fadeUp } from './ui'
 
 /** Branded stand-in for services that don't have client photos yet. */
-export function SheerPlaceholder({ className = '' }: { className?: string }) {
+function SheerPlaceholder({ className = '' }: { className?: string }) {
   return (
     <div
       className={`relative overflow-hidden bg-gradient-to-br from-[#2a2521] via-[#3a332c] to-[#1b1816] ${className}`}
@@ -33,7 +33,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <motion.article
       variants={fadeUp}
-      className="group relative flex flex-col overflow-hidden rounded-[26px] bg-white shadow-[0_1px_0_rgba(13,12,11,0.04),0_24px_48px_-32px_rgba(13,12,11,0.35)] ring-1 ring-ink/[0.06] transition-all duration-700 ease-lux hover:-translate-y-1.5 hover:shadow-[0_40px_70px_-35px_rgba(13,12,11,0.5)]"
+      className="group relative flex w-[82%] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] bg-white sm:w-auto shadow-[0_1px_0_rgba(13,12,11,0.04),0_24px_48px_-32px_rgba(13,12,11,0.35)] ring-1 ring-ink/[0.06] transition-all duration-700 ease-lux hover:-translate-y-1.5 hover:shadow-[0_40px_70px_-35px_rgba(13,12,11,0.5)]"
     >
       <div className="relative aspect-[4/3.4] overflow-hidden">
         {cover ? (
@@ -53,7 +53,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           {String(index + 1).padStart(2, '0')}
         </span>
         {!cover && (
-          <span className="absolute bottom-4 left-4 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-white uppercase backdrop-blur">
+          <span className="absolute bottom-4 left-4 rounded-full bg-white/15 px-3 py-1 text-[12px] font-bold tracking-[0.2em] text-white uppercase backdrop-blur">
             Fabric samples on request
           </span>
         )}
@@ -68,19 +68,19 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             <button
               type="button"
               onClick={() => showWork(service.category!)}
-              className="group/link inline-flex items-center gap-1.5 text-[12px] font-bold tracking-[0.1em] whitespace-nowrap text-ink uppercase"
+              className="group/link inline-flex min-h-11 items-center gap-1.5 text-[12px] font-bold tracking-[0.1em] whitespace-nowrap text-ink uppercase"
             >
               View Work
               <IconArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
             </button>
           ) : (
-            <span className="text-[11px] font-bold tracking-[0.1em] whitespace-nowrap text-ink/35 uppercase">Samples in store</span>
+            <span className="text-[12px] font-bold tracking-[0.1em] whitespace-nowrap text-ink/65 uppercase">Samples in store</span>
           )}
           <a
             href={waLink(service.message)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[11px] font-bold tracking-[0.1em] text-white uppercase transition-colors duration-300 hover:bg-gold hover:text-ink"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] text-white uppercase transition-colors duration-300 hover:bg-gold hover:text-ink"
             aria-label={`Enquire on WhatsApp about ${service.name}`}
           >
             <IconWhatsApp className="h-3.5 w-3.5" />
@@ -106,13 +106,18 @@ export default function Services() {
             }
             text="From modern kitchens and custom wardrobes to elegant sofas, curtains and complete interior transformations."
           />
-          <p className="max-w-xs text-sm leading-relaxed text-ink/50 lg:pb-3 lg:text-right">
+          <p className="max-w-xs text-sm leading-relaxed text-ink/65 lg:pb-3 lg:text-right">
             Every enquiry goes straight to our team on WhatsApp — tell us about your space and get a
             quotation.
           </p>
         </div>
 
-        <Stagger gap={0.08} className="mt-14 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:gap-7 xl:grid-cols-4">
+        <p className="mt-10 text-sm font-semibold text-ink/70 sm:hidden">Swipe to see all {SERVICES.length} services →</p>
+        {/* Phones: a swipeable row instead of eight stacked cards. Larger screens: a grid. */}
+        <Stagger
+          gap={0.08}
+          className="scrollbar-none -mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pt-2 pb-8 sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:mt-20 lg:gap-7 xl:grid-cols-4"
+        >
           {SERVICES.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />
           ))}

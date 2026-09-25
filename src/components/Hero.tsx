@@ -61,7 +61,7 @@ export default function Hero() {
               <motion.span {...line(0.35)} className="block">
                 Designing Spaces,
               </motion.span>
-            </span>
+            </span>{' '}
             <span className="block overflow-hidden pb-3">
               <motion.span {...line(0.5)} className="block">
                 <Accent>Elevating</Accent> Lifestyles<span className="text-gold">.</span>
@@ -113,12 +113,12 @@ export default function Hero() {
           className="glass-dark hidden rounded-3xl p-5 shadow-2xl shadow-black/40 lg:col-span-4 lg:block"
         >
           <div className="relative overflow-hidden rounded-2xl">
-            <img src={inset.sm} alt={inset.alt} className="aspect-[4/3] w-full object-cover" loading="lazy" />
-            <span className="absolute top-3 left-3 rounded-full bg-ink/70 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-gold uppercase backdrop-blur">
+            <img src={inset.sm} alt={inset.alt} width={inset.w} height={inset.h} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+            <span className="absolute top-3 left-3 rounded-full bg-ink/70 px-3 py-1 text-[12px] font-bold tracking-[0.2em] text-gold uppercase backdrop-blur">
               Arabic Design
             </span>
           </div>
-          <p className="mt-5 text-[11px] font-bold tracking-[0.24em] text-white/50 uppercase">Our expertise</p>
+          <p className="mt-5 text-[12px] font-bold tracking-[0.24em] text-white/50 uppercase">Our expertise</p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {SERVICES.map((s) => (
               <li key={s.id}>
@@ -126,7 +126,7 @@ export default function Hero() {
                   href="#services"
                   className="block rounded-full border border-white/10 px-3 py-1.5 text-[12px] font-medium text-white/80 transition hover:border-gold/60 hover:text-white"
                 >
-                  {s.name.replace(' (Arabic Design)', '')}
+                  {s.name}
                 </a>
               </li>
             ))}

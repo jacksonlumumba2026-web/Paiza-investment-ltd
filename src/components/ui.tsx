@@ -3,12 +3,16 @@ import type { ReactNode } from 'react'
 
 export const EASE = [0.22, 1, 0.36, 1] as const
 
+// Quick, subtle reveals that start before an element scrolls into view, so fast
+// scrolling never shows empty screens.
+const VIEWPORT = { once: true, margin: '0px 0px 200px 0px' } as const
+
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
 }
 
-export const stagger = (gap = 0.1, delay = 0): Variants => ({
+export const stagger = (gap = 0.06, delay = 0): Variants => ({
   hidden: {},
   show: { transition: { staggerChildren: gap, delayChildren: delay } },
 })
@@ -18,7 +22,7 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  y = 40,
+  y = 16,
 }: {
   children: ReactNode
   className?: string
@@ -30,8 +34,8 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-      transition={{ duration: 0.8, ease: EASE, delay }}
+      viewport={VIEWPORT}
+      transition={{ duration: 0.45, ease: EASE, delay }}
     >
       {children}
     </motion.div>
@@ -42,7 +46,7 @@ export function Reveal({
 export function Stagger({
   children,
   className,
-  gap = 0.1,
+  gap = 0.06,
   delay = 0,
   as = 'div',
 }: {
@@ -59,7 +63,7 @@ export function Stagger({
       variants={stagger(gap, delay)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+      viewport={VIEWPORT}
     >
       {children}
     </Comp>

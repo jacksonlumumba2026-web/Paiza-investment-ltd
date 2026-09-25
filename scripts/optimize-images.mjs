@@ -60,5 +60,38 @@ for (const file of files) {
   meta[id] = { w: width, h: height }
 }
 
+// 1200×630 JPEG for link previews (WhatsApp, Facebook, Meta ads). Crawlers need JPEG/PNG.
+await sharp(path.join(SRC, 'IMG-20260923-WA0214.jpg'))
+  .rotate()
+  .resize(1200, 630, { fit: 'cover', position: 'centre' })
+  .jpeg({ quality: 82, mozjpeg: true })
+  .toFile('public/og-image.jpg')
+
+// PNG icons from the SVG favicon: home-screen icon and the logo Google shows for the business.
+await sharp('public/favicon.svg', { density: 600 }).resize(180, 180).png().toFile('public/apple-touch-icon.png')
+await sharp('public/favicon.svg', { density: 600 }).resize(512, 512).png().toFile('public/logo-512.png')
+await sharp('public/favicon.svg', { density: 600 }).resize(192, 192).png().toFile('public/icon-192.png')
+
+// favicon.ico for older browsers: an ICO file wrapping 16, 32 and 48 px PNGs.
+const icoSizes = [16, 32, 48]
+const pngs = await Promise.all(
+  icoSizes.map((s) => sharp('public/favicon.svg', { density: 300 }).resize(s, s).png().toBuffer()),
+)
+const header = Buffer.alloc(6 + 16 * pngs.length)
+header.writeUInt16LE(1, 2) // type: icon
+header.writeUInt16LE(pngs.length, 4)
+let offset = header.length
+pngs.forEach((png, i) => {
+  const e = 6 + 16 * i
+  header.writeUInt8(icoSizes[i], e)
+  header.writeUInt8(icoSizes[i], e + 1)
+  header.writeUInt16LE(1, e + 4) // colour planes
+  header.writeUInt16LE(32, e + 6) // bits per pixel
+  header.writeUInt32LE(png.length, e + 8)
+  header.writeUInt32LE(offset, e + 12)
+  offset += png.length
+})
+await writeFile('public/favicon.ico', Buffer.concat([header, ...pngs]))
+
 await writeFile('src/data/image-meta.json', JSON.stringify(meta, null, 2) + '\n')
 console.log(`Optimised ${Object.keys(meta).length} images → ${OUT}`)

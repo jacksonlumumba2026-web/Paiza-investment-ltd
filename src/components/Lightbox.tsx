@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { categoryTitle, type Photo } from '../data/gallery'
 import { waLink } from '../data/site'
 import { IconChevronLeft, IconChevronRight, IconClose, IconWhatsApp } from './icons'
@@ -11,6 +11,17 @@ const pad = (n: number) => String(n).padStart(2, '0')
 
 export default function Lightbox({ state, onClose }: { state: LightboxState; onClose: () => void }) {
   const [[index, dir], setIndex] = useState<[number, number]>([0, 0])
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const open = !!state
+
+  // Move focus into the viewer on open and back to the photo that opened it on close.
+  useEffect(() => {
+    if (!open) return
+    const trigger = document.activeElement as HTMLElement | null
+    requestAnimationFrame(() => closeRef.current?.focus())
+    return () => trigger?.focus({ preventScroll: true })
+  }, [open])
 
   useEffect(() => {
     if (state) setIndex([state.index, 0])
@@ -25,6 +36,24 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
   useEffect(() => {
     if (!state) return
     const onKey = (e: KeyboardEvent) => {
+      // Keep Tab / Shift+Tab inside the viewer.
+      if (e.key === 'Tab' && dialogRef.current) {
+        const items = [...dialogRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')].filter(
+          (el) => el.offsetParent !== null,
+        )
+        const first = items[0]
+        const last = items[items.length - 1]
+        if (!dialogRef.current.contains(document.activeElement)) {
+          e.preventDefault()
+          first?.focus()
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last?.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first?.focus()
+        }
+      }
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowRight') go(1)
       if (e.key === 'ArrowLeft') go(-1)
@@ -59,6 +88,7 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
     <AnimatePresence>
       {state && photo && (
         <motion.div
+          ref={dialogRef}
           className="fixed inset-0 z-[70] flex flex-col bg-ink/[0.97] text-white backdrop-blur-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,13 +101,14 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8 sm:py-6">
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-bold tracking-[0.24em] text-gold uppercase">{label}</p>
+              <p className="truncate text-[12px] font-bold tracking-[0.24em] text-gold uppercase">{label}</p>
               <p className="mt-1 font-serif text-2xl italic">
-                {pad(index + 1)} <span className="text-white/35">/ {pad(total)}</span>
+                {pad(index + 1)} <span className="text-white/60">/ {pad(total)}</span>
               </p>
             </div>
             <button
               type="button"
+              ref={closeRef}
               onClick={onClose}
               className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 transition hover:border-white/50 hover:bg-white/10"
               aria-label="Close"
@@ -138,7 +169,10 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
           <div className="flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
             <div className="max-w-xl">
               {photo.name && (
-                <p className="text-lg font-extrabold tracking-[0.12em] text-white uppercase">{photo.name}</p>
+                <p className="text-lg font-extrabold tracking-[0.12em] text-white uppercase">
+                  <span className="mr-2 text-sm font-semibold tracking-normal text-white/70 normal-case">Sofa model</span>
+                  {photo.name}
+                </p>
               )}
               <p className="text-sm text-white/55">{photo.name ? photo.alt.replace(`${photo.name} — `, '') : photo.alt}</p>
             </div>

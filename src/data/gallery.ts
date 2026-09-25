@@ -291,5 +291,8 @@ export const photoById = (id: string) => {
   return p
 }
 
+/** `srcset` for the two generated sizes (see scripts/optimize-images.mjs: 720 and 1600 px wide). */
+export const srcSet = (p: Photo) => `${p.sm} ${Math.min(720, p.w)}w, ${p.lg} ${Math.min(1600, p.w)}w`
+
 export const photosFor = (cat: CategoryId | 'all') =>
   cat === 'all' ? PHOTOS : PHOTOS.filter((p) => p.cats.includes(cat))

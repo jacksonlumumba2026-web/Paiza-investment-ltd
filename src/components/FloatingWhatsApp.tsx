@@ -3,20 +3,41 @@ import { useEffect, useState } from 'react'
 import { waLink } from '../data/site'
 import { IconWhatsApp } from './icons'
 
+/** Sections with their own WhatsApp buttons; the bubble steps aside so it never covers them. */
+const HAS_OWN_BUTTONS = ['#services', '#contact', 'footer']
+
 export default function FloatingWhatsApp() {
-  const [show, setShow] = useState(false)
+  const [pastHero, setPastHero] = useState(false)
+  const [blocked, setBlocked] = useState(false)
 
   // Appears once the visitor scrolls past the hero (where the main CTA already sits).
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.6)
+    const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.6)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Watches only the bottom 18% of the screen, where the bubble sits.
+  useEffect(() => {
+    const visible = new Set<Element>()
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)))
+        setBlocked(visible.size > 0)
+      },
+      { rootMargin: '-82% 0px 0px 0px' },
+    )
+    HAS_OWN_BUTTONS.forEach((sel) => {
+      const el = document.querySelector(sel)
+      if (el) io.observe(el)
+    })
+    return () => io.disconnect()
+  }, [])
+
   return (
     <AnimatePresence>
-      {show && (
+      {pastHero && !blocked && (
         <motion.a
           href={waLink()}
           target="_blank"

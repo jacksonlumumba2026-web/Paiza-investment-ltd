@@ -12,7 +12,7 @@
   --color-stone: #8a8378;
   --color-gold: #f5c518;
   --color-gold-deep: #d9a900;
-  --color-ember: #e0301e;
+  --color-ember: #c0281a;
 
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -50,7 +50,7 @@
     @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.28em] uppercase;
+    @apply inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.28em] uppercase;
   }
   .eyebrow::before {
     content: '';
@@ -80,7 +80,7 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[12px] font-bold tracking-[0.06em] whitespace-nowrap uppercase sm:text-[13px] sm:tracking-[0.08em] transition-all duration-500 ease-lux;
+  @apply inline-flex min-h-11 items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[12px] font-bold tracking-[0.06em] whitespace-nowrap uppercase sm:text-[13px] sm:tracking-[0.08em] transition-all duration-500 ease-lux;
 }
 
 @utility scrollbar-none {

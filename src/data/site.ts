@@ -3,12 +3,12 @@ export const SITE = {
   category: 'Home Furnishings & Interior Fit-Out Experts',
   tagline: 'Style. Quality. Comfort.',
   message: 'Designing Spaces, Elevating Lifestyles.',
-  phoneDisplay: '0792680757',
+  phoneDisplay: '0792 680 757',
   phoneTel: '+254792680757',
   whatsapp: '254792680757',
-  email: 'Paiza777investmentltd@gmail.com',
+  email: 'info@paiza-investment.co.ke',
   location: 'Kikuyu Town, Nderitu Rd, near the Law Court',
-  branch: 'Small Branch in Mombasa Rd',
+  branch: 'Mombasa Rd branch',
   /**
    * Paste the Google Maps "Embed a map" iframe src here once the client
    * confirms the exact pin. While empty, a styled placeholder is shown.
@@ -16,6 +16,13 @@ export const SITE = {
   mapEmbedUrl: '',
   /** Optional: the client's shared Google Maps link for "Get directions". */
   mapShareUrl: '',
+  /**
+   * Analytics IDs (see src/analytics.ts). While empty, nothing loads.
+   * GA4: "G-XXXXXXXXXX" from Google Analytics → Admin → Data streams.
+   * Meta Pixel: digits from Meta Events Manager.
+   */
+  ga4MeasurementId: '',
+  metaPixelId: '',
 } as const
 
 export const DEFAULT_MESSAGE =
@@ -34,8 +41,8 @@ export function directionsLink() {
 
 export const NAV = [
   { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Our Work', href: '#work' },
+  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ] as const

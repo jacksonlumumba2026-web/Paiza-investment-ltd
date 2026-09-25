@@ -59,7 +59,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className={`relative rounded-full px-4 py-2 text-[13px] font-semibold tracking-wide transition-colors duration-300 ${
+                  className={`relative inline-flex min-h-11 items-center rounded-full px-4 text-[13px] font-semibold tracking-wide transition-colors duration-300 ${
                     active === item.href ? 'text-white' : 'text-white/60 hover:text-white'
                   }`}
                 >
@@ -91,6 +91,7 @@ export default function Navbar() {
               className="glass-dark grid h-11 w-11 place-items-center rounded-full text-white lg:hidden"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
+              aria-controls="mobile-menu"
             >
               {open ? <IconClose className="h-5 w-5" /> : <IconMenu className="h-5 w-5" />}
             </button>
@@ -101,6 +102,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             className="fixed inset-0 z-40 flex flex-col bg-ink pt-24 lg:hidden"
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
@@ -137,7 +139,7 @@ export default function Navbar() {
                 <IconWhatsApp className="h-5 w-5" />
                 Chat on WhatsApp
               </a>
-              <p className="mt-5 text-center text-sm text-white/40">
+              <p className="mt-5 text-center text-sm text-white/60">
                 {SITE.phoneDisplay} · {SITE.tagline}
               </p>
             </motion.div>

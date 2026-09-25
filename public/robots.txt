@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paiza-investment.co.ke/sitemap.xml
