@@ -3,19 +3,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import About from './components/About'
 import Contact from './components/Contact'
 import FAQ from './components/FAQ'
-import Featured from './components/Featured'
 import FinalCTA from './components/FinalCTA'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Footer from './components/Footer'
 import Gallery from './components/Gallery'
 import Hero from './components/Hero'
-import Intro from './components/Intro'
 import Lightbox, { type LightboxState } from './components/Lightbox'
 import Navbar from './components/Navbar'
 import Process from './components/Process'
 import Services from './components/Services'
-import ServiceShowcase from './components/ServiceShowcase'
-import TrustBar from './components/TrustBar'
 import WhyChoose from './components/WhyChoose'
 import { SiteContext, type Filter } from './context'
 import { CATEGORIES, type Photo } from './data/gallery'
@@ -60,18 +56,20 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <SiteContext.Provider value={ctx}>
+        <a
+          href="#main"
+          className="sr-only z-[80] rounded-full bg-gold px-5 py-3 text-sm font-bold text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <main>
+        <main id="main" tabIndex={-1} className="outline-none">
           <Hero />
-          <TrustBar />
-          <Intro />
           <Services />
-          <ServiceShowcase />
-          <Featured />
+          <Gallery />
           <About />
           <WhyChoose />
           <Process />
-          <Gallery />
           <FAQ />
           <FinalCTA />
           <Contact />

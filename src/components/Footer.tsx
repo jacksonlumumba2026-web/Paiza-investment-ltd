@@ -1,4 +1,4 @@
-import { NAV, SITE, waLink } from '../data/site'
+import { NAV, SITE, directionsLink, waLink } from '../data/site'
 import { useSite } from '../context'
 import type { Filter } from '../context'
 import { IconArrowUpRight, IconWhatsApp } from './icons'
@@ -17,7 +17,7 @@ const FOOTER_SERVICES: { label: string; filter?: Filter; href?: string }[] = [
 
 export default function Footer() {
   const { showWork } = useSite()
-  const linkCls = 'text-[15px] text-white/60 transition-colors hover:text-gold'
+  const linkCls = 'inline-flex min-h-11 min-w-11 items-center text-[15px] text-white/70 transition-colors hover:text-gold'
 
   return (
     <footer className="relative overflow-hidden bg-ink pt-20 pb-10 text-white lg:pt-28">
@@ -30,7 +30,7 @@ export default function Footer() {
             <p className="mt-6 max-w-xs font-serif text-2xl leading-snug text-white/85 italic">
               {SITE.message}
             </p>
-            <p className="mt-3 text-sm text-white/45">{SITE.category}</p>
+            <p className="mt-3 text-sm text-white/60">{SITE.category}</p>
             <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold mt-8 !py-3">
               <IconWhatsApp className="h-4 w-4" />
               Chat on WhatsApp
@@ -39,8 +39,8 @@ export default function Footer() {
 
           <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8">
             <div>
-              <h4 className="text-[11px] font-bold tracking-[0.24em] text-gold uppercase">Quick Links</h4>
-              <ul className="mt-6 space-y-3">
+              <h4 className="text-[12px] font-bold tracking-[0.24em] text-gold uppercase">Quick Links</h4>
+              <ul className="mt-4">
                 {NAV.map((n) => (
                   <li key={n.href}>
                     <a href={n.href} className={linkCls}>
@@ -51,8 +51,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-[11px] font-bold tracking-[0.24em] text-gold uppercase">Services</h4>
-              <ul className="mt-6 space-y-3">
+              <h4 className="text-[12px] font-bold tracking-[0.24em] text-gold uppercase">Services</h4>
+              <ul className="mt-4">
                 {FOOTER_SERVICES.map((s) => (
                   <li key={s.label}>
                     {s.filter ? (
@@ -69,8 +69,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-[11px] font-bold tracking-[0.24em] text-gold uppercase">Contact</h4>
-              <ul className="mt-6 space-y-3 text-[15px] text-white/60">
+              <h4 className="text-[12px] font-bold tracking-[0.24em] text-gold uppercase">Contact</h4>
+              <ul className="mt-4 text-[15px] text-white/70">
                 <li>
                   <a href={`tel:${SITE.phoneTel}`} className={linkCls}>
                     {SITE.phoneDisplay}
@@ -81,14 +81,18 @@ export default function Footer() {
                     {SITE.email}
                   </a>
                 </li>
-                <li>{SITE.location}</li>
-                <li>Branch: Mombasa Rd</li>
+                <li>
+                  <a href={directionsLink()} target="_blank" rel="noopener noreferrer" className={`${linkCls} py-2`}>
+                    {SITE.location}
+                  </a>
+                </li>
+                <li className="py-2">{SITE.branch}</li>
               </ul>
             </div>
           </div>
         </Reveal>
 
-        <p className="mt-16 text-center text-[11px] font-bold tracking-[0.4em] text-gold/70 uppercase">
+        <p className="mt-16 text-center text-[12px] font-bold tracking-[0.4em] text-gold/70 uppercase">
           Making every room a masterpiece
         </p>
 
@@ -102,13 +106,13 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-4 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
           <p className="flex items-center gap-3 tracking-[0.2em] uppercase">
             {SITE.tagline}
-            <a href="#home" className="grid h-9 w-9 place-items-center rounded-full border border-white/15 transition hover:border-gold hover:text-gold" aria-label="Back to top">
+            <a href="#home" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition hover:border-gold hover:text-gold" aria-label="Back to top">
               <IconArrowUpRight className="h-4 w-4 -rotate-45" />
             </a>
           </p>

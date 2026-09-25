@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { initMetaPixel } from './metaPixel'
+import { initAnalytics } from './analytics'
 
 const root = document.getElementById('root')!
 const app = (
@@ -15,4 +15,4 @@ const app = (
 if (root.hasChildNodes()) hydrateRoot(root, app)
 else createRoot(root).render(app)
 
-initMetaPixel()
+initAnalytics()

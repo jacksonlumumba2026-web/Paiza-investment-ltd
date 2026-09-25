@@ -98,10 +98,10 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'arabic',
-    name: 'Artic Sofa Design (Arabic Design)',
+    name: 'Arabic Sofa Designs',
     description:
       'Opulent Arabic-inspired sofa sets with sculpted frames, gold accents and luxurious velvet upholstery.',
-    message: quote('Artic Sofa Design (Arabic Design)'),
+    message: quote('Arabic Sofa Designs'),
     category: 'arabic',
     cover: '0243',
     showcase: ['0243', '24-0025', '0121', '24-0016', '0241', '0099'],
@@ -118,6 +118,6 @@ export const SERVICE_OPTIONS = [
   'Curtain Rods & Rails',
   'Recliner Sofas',
   'Elegant Sofa Designs',
-  'Artic Sofa Design',
+  'Arabic Sofa Designs',
   'Other',
 ]

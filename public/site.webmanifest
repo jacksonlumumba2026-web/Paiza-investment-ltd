@@ -1,0 +1,13 @@
+{
+  "name": "Paiza Investment Ltd",
+  "short_name": "Paiza",
+  "description": "Home furnishings & interior fit-out: kitchens, wardrobes, gypsum, TV panels, curtains and sofas.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0d0c0b",
+  "theme_color": "#0d0c0b",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "logo-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

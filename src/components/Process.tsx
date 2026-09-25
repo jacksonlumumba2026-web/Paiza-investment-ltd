@@ -29,13 +29,13 @@ export default function Process() {
               className="h-full origin-left bg-gradient-to-r from-gold via-gold to-ember"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 1.8, ease: EASE, delay: 0.2 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: EASE, delay: 0.1 }}
             />
           </div>
           <div className="absolute top-0 bottom-0 left-7 w-px bg-ink/10 lg:hidden" />
 
-          <Stagger as="ul" gap={0.18} delay={0.2} className="grid gap-10 lg:grid-cols-4 lg:gap-8">
+          <Stagger as="ul" gap={0.08} className="grid gap-10 lg:grid-cols-4 lg:gap-8">
             {STEPS.map((s, i) => (
               <motion.li key={s.title} variants={fadeUp} className="relative flex gap-6 lg:block">
                 <span

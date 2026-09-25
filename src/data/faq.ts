@@ -7,11 +7,11 @@ import { SITE } from './site'
 export const FAQS: { q: string; a: string }[] = [
   {
     q: 'What services does Paiza Investment Ltd offer?',
-    a: 'We design, supply and fit modern kitchens, wardrobes, gypsum ceilings, TV wall panels, curtains and sheers, curtain rods and rails, recliner sofas, elegant sofas and Arabic-design (Artic) sofas — plus office furniture.',
+    a: 'We design, supply and fit modern kitchens, wardrobes, gypsum ceilings, TV wall panels, curtains and sheers, curtain rods and rails, recliner sofas, elegant sofas and Arabic-design sofas — plus office furniture.',
   },
   {
     q: 'Where are you located?',
-    a: `Our main showroom is in ${SITE.location}. We also have a small branch on Mombasa Rd.`,
+    a: `Our main showroom is in ${SITE.location}. We also have a branch on Mombasa Rd.`,
   },
   {
     q: 'Do you deliver and install outside Kikuyu and Nairobi?',

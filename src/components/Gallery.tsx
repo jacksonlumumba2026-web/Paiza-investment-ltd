@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
-import { CATEGORIES, PHOTOS, categoryTitle, photosFor, type Photo } from '../data/gallery'
+import { CATEGORIES, PHOTOS, categoryTitle, photosFor, srcSet, type Photo } from '../data/gallery'
 import { useSite, type Filter } from '../context'
 import { IconExpand, IconPlus } from './icons'
 import { Accent, EASE, Reveal, SectionHeading } from './ui'
@@ -67,7 +67,7 @@ export default function Gallery() {
             text="Take a look at some of the spaces, furniture and interior solutions we have worked on."
           />
           <Reveal className="shrink-0 lg:pb-3">
-            <p className="text-sm text-ink/50">
+            <p className="text-sm text-ink/65">
               <span className="font-serif text-4xl text-ink italic">{list.length}</span>{' '}
               {filter === 'all' ? 'project photos' : `photos · ${categoryTitle(filter)}`}
             </p>
@@ -76,17 +76,16 @@ export default function Gallery() {
 
         {/* Filters */}
         <Reveal className="sticky top-[68px] z-20 -mx-5 mt-12 bg-cream/85 px-5 py-3 backdrop-blur-lg sm:-mx-8 sm:px-8 lg:static lg:mx-0 lg:mt-16 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
-          <div role="tablist" aria-label="Filter projects" className="scrollbar-none flex gap-2 overflow-x-auto lg:flex-wrap">
+          <div role="group" aria-label="Filter projects by category" className="scrollbar-none flex gap-2 overflow-x-auto lg:flex-wrap">
             {filters.map((f) => {
               const on = f.id === filter
               return (
                 <button
                   key={f.id}
-                  role="tab"
-                  aria-selected={on}
+                  aria-pressed={on}
                   onClick={() => setFilter(f.id)}
-                  className={`relative shrink-0 rounded-full px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] uppercase transition-colors duration-300 ${
-                    on ? 'text-ink' : 'text-ink/55 ring-1 ring-ink/10 hover:text-ink hover:ring-ink/30'
+                  className={`relative min-h-11 shrink-0 rounded-full px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] uppercase transition-colors duration-300 ${
+                    on ? 'text-ink' : 'text-ink/65 ring-1 ring-ink/10 hover:text-ink hover:ring-ink/30'
                   }`}
                 >
                   {on && (
@@ -98,7 +97,7 @@ export default function Gallery() {
                   )}
                   <span className="relative">
                     {f.label}
-                    <span className={`ml-1.5 ${on ? 'text-ink/60' : 'text-ink/30'}`}>{f.count}</span>
+                    <span className={`ml-1.5 ${on ? 'text-ink/60' : 'text-ink/65'}`}>{f.count}</span>
                   </span>
                 </button>
               )
@@ -119,13 +118,15 @@ export default function Gallery() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.6, ease: EASE, delay: (index % PAGE) * 0.04 }}
+                    transition={{ duration: 0.4, ease: EASE, delay: (index % PAGE) * 0.025 }}
                     className="group relative block overflow-hidden rounded-2xl bg-sand text-left sm:rounded-[22px]"
                     style={{ aspectRatio: `${photo.w} / ${photo.h}` }}
                     aria-label={`Open image: ${photo.alt}`}
                   >
                     <img
                       src={photo.sm}
+                      srcSet={srcSet(photo)}
+                      sizes="(min-width: 1024px) 400px, 50vw"
                       alt={photo.alt}
                       loading="lazy"
                       decoding="async"
@@ -134,13 +135,13 @@ export default function Gallery() {
                       className="h-full w-full object-cover transition-transform duration-[1.4s] ease-lux group-hover:scale-[1.06]"
                     />
                     {photo.name && (
-                      <span className="absolute top-3 left-3 rounded-full bg-ink/75 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-gold uppercase backdrop-blur sm:top-4 sm:left-4">
-                        {photo.name}
+                      <span className="absolute top-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-[12px] font-bold tracking-[0.12em] text-gold uppercase backdrop-blur sm:top-4 sm:left-4">
+                        <span className="font-semibold text-white/80 normal-case tracking-normal">Model</span> {photo.name}
                       </span>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute inset-x-0 bottom-0 hidden translate-y-3 items-end justify-between gap-3 p-5 opacity-0 sm:flex transition-all duration-500 ease-lux group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="text-[11px] font-bold tracking-[0.18em] text-white uppercase">
+                      <span className="text-[12px] font-bold tracking-[0.18em] text-white uppercase">
                         {photo.name ?? categoryTitle(photo.cats[0])}
                       </span>
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-ink">
@@ -163,7 +164,7 @@ export default function Gallery() {
               transition={{ duration: 0.6, ease: EASE }}
             />
           </div>
-          <p className="text-xs font-semibold tracking-[0.18em] text-ink/45 uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-ink/65 uppercase">
             Showing {shown.length} of {list.length}
           </p>
           {visible < list.length && (

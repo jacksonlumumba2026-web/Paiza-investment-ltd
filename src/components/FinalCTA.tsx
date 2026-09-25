@@ -1,19 +1,21 @@
 import { motion } from 'framer-motion'
-import { photoById } from '../data/gallery'
-import { waLink } from '../data/site'
-import { useSite } from '../context'
-import { IconArrow, IconWhatsApp } from './icons'
+import { photoById, srcSet } from '../data/gallery'
+import { SITE, waLink } from '../data/site'
+import { IconPhone, IconWhatsApp } from './icons'
 import { Accent, Stagger, fadeUp } from './ui'
 
 const bg = photoById('0211')
 
 export default function FinalCTA() {
-  const { showWork } = useSite()
   return (
     <section className="bg-cream px-3 pb-3 sm:px-5 sm:pb-5">
       <div className="relative isolate overflow-hidden rounded-[32px] bg-ink text-white">
         <img
           src={bg.lg}
+          srcSet={srcSet(bg)}
+          sizes="100vw"
+          width={bg.w}
+          height={bg.h}
           alt=""
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
@@ -21,7 +23,7 @@ export default function FinalCTA() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-ink via-ink/85 to-ink/40" />
         <div className="absolute -right-24 -bottom-24 -z-10 h-80 w-80 rounded-full bg-gold/25 blur-[100px]" />
 
-        <Stagger gap={0.12} className="container-lux py-24 text-center sm:py-32 lg:py-40">
+        <Stagger className="container-lux py-24 text-center sm:py-32 lg:py-40">
           <motion.p variants={fadeUp} className="eyebrow justify-center text-gold">
             Let’s talk
           </motion.p>
@@ -39,10 +41,10 @@ export default function FinalCTA() {
               <IconWhatsApp className="h-5 w-5" />
               Chat with us on WhatsApp
             </a>
-            <button type="button" onClick={() => showWork('all')} className="btn-ghost-light group !px-8 !py-5">
-              Explore our work
-              <IconArrow className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-            </button>
+            <a href={`tel:${SITE.phoneTel}`} className="btn-ghost-light !px-8 !py-5">
+              <IconPhone className="h-5 w-5" />
+              Call {SITE.phoneDisplay}
+            </a>
           </motion.div>
         </Stagger>
       </div>
