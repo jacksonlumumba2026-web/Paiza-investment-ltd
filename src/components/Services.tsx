@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { photoById } from '../data/gallery'
 import { SERVICES, type Service } from '../data/services'
 import { waLink } from '../data/site'
@@ -31,7 +31,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   const cover = service.cover ? photoById(service.cover) : null
 
   return (
-    <motion.article
+    <m.article
       variants={fadeUp}
       className="group relative flex w-[82%] shrink-0 snap-start flex-col overflow-hidden rounded-[26px] bg-white sm:w-auto shadow-[0_1px_0_rgba(13,12,11,0.04),0_24px_48px_-32px_rgba(13,12,11,0.35)] ring-1 ring-ink/[0.06] transition-all duration-700 ease-lux hover:-translate-y-1.5 hover:shadow-[0_40px_70px_-35px_rgba(13,12,11,0.5)]"
     >
@@ -49,7 +49,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <SheerPlaceholder className="h-full w-full transition-transform duration-[1.4s] ease-lux group-hover:scale-110" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
-        <span className="absolute top-4 left-4 font-serif text-2xl text-white italic drop-shadow">
+        <span aria-hidden className="absolute top-4 left-4 font-serif text-2xl text-white italic drop-shadow">
           {String(index + 1).padStart(2, '0')}
         </span>
         {!cover && (
@@ -88,7 +88,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           </a>
         </div>
       </div>
-    </motion.article>
+    </m.article>
   )
 }
 

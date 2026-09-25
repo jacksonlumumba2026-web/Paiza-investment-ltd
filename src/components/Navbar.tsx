@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { NAV, SITE, waLink } from '../data/site'
-import { IconClose, IconMenu, IconWhatsApp } from './icons'
+import { IconClose, IconMenu, IconPhone, IconWhatsApp } from './icons'
 import Logo from './Logo'
 import { EASE } from './ui'
 
@@ -65,7 +65,7 @@ export default function Navbar() {
                 >
                   {item.label}
                   {active === item.href && (
-                    <motion.span
+                    <m.span
                       layoutId="nav-dot"
                       className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-gold"
                     />
@@ -101,7 +101,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             className="fixed inset-0 z-40 flex flex-col bg-ink pt-24 lg:hidden"
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -112,7 +112,7 @@ export default function Navbar() {
             <div className="pointer-events-none absolute -right-32 -bottom-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
             <ul className="container-lux flex flex-1 flex-col justify-center gap-2">
               {NAV.map((item, i) => (
-                <motion.li
+                <m.li
                   key={item.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -126,10 +126,10 @@ export default function Navbar() {
                     <span className="font-serif text-lg font-normal text-gold italic">0{i + 1}</span>
                     <span className="transition-colors group-hover:text-gold">{item.label}</span>
                   </a>
-                </motion.li>
+                </m.li>
               ))}
             </ul>
-            <motion.div
+            <m.div
               className="container-lux pb-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -139,11 +139,13 @@ export default function Navbar() {
                 <IconWhatsApp className="h-5 w-5" />
                 Chat on WhatsApp
               </a>
-              <p className="mt-5 text-center text-sm text-white/60">
-                {SITE.phoneDisplay} · {SITE.tagline}
-              </p>
-            </motion.div>
-          </motion.div>
+              <a href={`tel:${SITE.phoneTel}`} className="btn-ghost-light mt-3 w-full !py-4">
+                <IconPhone className="h-5 w-5" />
+                Call {SITE.phoneDisplay}
+              </a>
+              <p className="mt-5 text-center text-sm text-white/60">{SITE.tagline}</p>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

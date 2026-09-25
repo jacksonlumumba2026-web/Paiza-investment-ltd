@@ -1,4 +1,4 @@
-import { MotionConfig } from 'framer-motion'
+import { LazyMotion, MotionConfig } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -15,6 +15,8 @@ import Services from './components/Services'
 import WhyChoose from './components/WhyChoose'
 import { SiteContext, type Filter } from './context'
 import { CATEGORIES, type Photo } from './data/gallery'
+
+const loadMotionFeatures = () => import('./motionFeatures').then((mod) => mod.default)
 
 export default function App() {
   const [filter, setFilter] = useState<Filter>('all')
@@ -55,29 +57,31 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <SiteContext.Provider value={ctx}>
-        <a
-          href="#main"
-          className="sr-only z-[80] rounded-full bg-gold px-5 py-3 text-sm font-bold text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
-        >
-          Skip to content
-        </a>
-        <Navbar />
-        <main id="main" tabIndex={-1} className="outline-none">
-          <Hero />
-          <Services />
-          <Gallery />
-          <About />
-          <WhyChoose />
-          <Process />
-          <FAQ />
-          <FinalCTA />
-          <Contact />
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <Lightbox state={lightbox} onClose={closeLightbox} />
-      </SiteContext.Provider>
+      <LazyMotion features={loadMotionFeatures} strict>
+        <SiteContext.Provider value={ctx}>
+          <a
+            href="#main"
+            className="sr-only z-[80] rounded-full bg-gold px-5 py-3 text-sm font-bold text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+          >
+            Skip to content
+          </a>
+          <Navbar />
+          <main id="main" tabIndex={-1} className="outline-none">
+            <Hero />
+            <Services />
+            <Gallery />
+            <About />
+            <WhyChoose />
+            <Process />
+            <FAQ />
+            <FinalCTA />
+            <Contact />
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <Lightbox state={lightbox} onClose={closeLightbox} />
+        </SiteContext.Provider>
+      </LazyMotion>
     </MotionConfig>
   )
 }

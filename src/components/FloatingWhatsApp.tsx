@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { waLink } from '../data/site'
 import { IconWhatsApp } from './icons'
@@ -38,7 +38,7 @@ export default function FloatingWhatsApp() {
   return (
     <AnimatePresence>
       {pastHero && !blocked && (
-        <motion.a
+        <m.a
           href={waLink()}
           target="_blank"
           rel="noopener noreferrer"
@@ -56,7 +56,7 @@ export default function FloatingWhatsApp() {
             <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-25 [animation-duration:2.4s]" />
             <IconWhatsApp className="relative h-7 w-7" />
           </span>
-        </motion.a>
+        </m.a>
       )}
     </AnimatePresence>
   )
