@@ -82,6 +82,14 @@ on the photo, in the full-screen viewer and in the WhatsApp enquiry.
 `#kitchens`, `#wardrobes`, `#gypsum`, `#tv-panels`, `#curtains`, `#rods`, `#recliners`, `#sofas`, `#arabic`,
 `#office`, `#installations` (ids from `CATEGORIES` in `src/data/gallery.ts`).
 
+### Meta (Facebook/Instagram ads)
+
+- **Domain verification:** Meta Business Suite → Settings → Brand safety → Domains → add `paiza-investment.co.ke`,
+  choose the DNS TXT option and add the record in Truehost.
+- **Meta Pixel:** put the Pixel ID in `metaPixelId` in `src/data/site.ts`. While it's empty, no Meta code loads.
+  When set, `src/metaPixel.ts` reports `PageView` plus a `Contact` event for every WhatsApp link, phone link and
+  enquiry-form send, which is the conversion to optimise ads for.
+
 ### Google Maps
 
 Paste the embed URL (Google Maps → Share → *Embed a map* → the iframe `src`) into `mapEmbedUrl` in `src/data/site.ts`. You can also set `mapShareUrl` for the "Get directions" button. Until then, a styled placeholder is shown.

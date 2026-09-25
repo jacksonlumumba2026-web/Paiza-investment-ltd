@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { initMetaPixel } from './metaPixel'
 
 const root = document.getElementById('root')!
 const app = (
@@ -13,3 +14,5 @@ const app = (
 // The production build ships pre-rendered HTML (see scripts/prerender.mjs); dev does not.
 if (root.hasChildNodes()) hydrateRoot(root, app)
 else createRoot(root).render(app)
+
+initMetaPixel()

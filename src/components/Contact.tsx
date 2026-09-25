@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState, type FormEvent } from 'react'
 import { SERVICE_OPTIONS } from '../data/services'
 import { SITE, directionsLink, waLink } from '../data/site'
+import { trackContact } from '../metaPixel'
 import { IconArrowUpRight, IconMail, IconPhone, IconPin, IconStore, IconWhatsApp } from './icons'
 import { Accent, Reveal, SectionHeading, Stagger, fadeUp } from './ui'
 
@@ -35,6 +36,7 @@ export default function Contact() {
     if (!form.service) next.service = 'Please choose a service'
     setErrors(next)
     if (Object.keys(next).length) return
+    trackContact('enquiry-form')
     window.open(waLink(buildMessage(form)), '_blank', 'noopener,noreferrer')
   }
 

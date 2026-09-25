@@ -16,6 +16,12 @@ export const SITE = {
   mapEmbedUrl: '',
   /** Optional: the client's shared Google Maps link for "Get directions". */
   mapShareUrl: '',
+  /**
+   * Meta Pixel ID from Meta Events Manager (digits only). While empty, no Meta
+   * code loads. When set, visits and WhatsApp/phone/form contacts are reported
+   * to Meta for ad measurement.
+   */
+  metaPixelId: '',
 } as const
 
 export const DEFAULT_MESSAGE =
