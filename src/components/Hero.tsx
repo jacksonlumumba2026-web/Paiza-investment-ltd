@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { photoById } from '../data/gallery'
 import { SERVICES } from '../data/services'
@@ -30,8 +30,8 @@ export default function Hero() {
       ref={ref}
       className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-white"
     >
-      <motion.div className="absolute inset-0 -z-10" style={{ y: imgY }}>
-        <motion.img
+      <m.div className="absolute inset-0 -z-10" style={{ y: imgY }}>
+        <m.img
           src={hero.lg}
           alt={hero.alt}
           width={hero.w}
@@ -42,42 +42,42 @@ export default function Hero() {
           animate={{ scale: 1 }}
           transition={{ duration: 2.4, ease: EASE }}
         />
-      </motion.div>
+      </m.div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/80 via-ink/20 to-transparent" />
       <div className="grain pointer-events-none absolute inset-0 -z-10 opacity-[0.07] mix-blend-overlay" />
 
-      <motion.div
+      <m.div
         style={{ y: contentY, opacity: fade }}
         className="container-lux grid w-full gap-12 pt-36 pb-14 sm:pb-20 lg:grid-cols-12 lg:items-end lg:pb-24"
       >
         <div className="lg:col-span-8">
-          <motion.p {...line(0.2)} className="eyebrow text-gold">
+          <m.p {...line(0.2)} className="eyebrow text-gold">
             {SITE.name}
-          </motion.p>
+          </m.p>
 
           <h1 className="display mt-6 text-[46px] sm:text-7xl lg:text-[88px] xl:text-[100px]">
             <span className="block overflow-hidden pb-2">
-              <motion.span {...line(0.35)} className="block">
+              <m.span {...line(0.35)} className="block">
                 Designing Spaces,
-              </motion.span>
+              </m.span>
             </span>{' '}
             <span className="block overflow-hidden pb-3">
-              <motion.span {...line(0.5)} className="block">
+              <m.span {...line(0.5)} className="block">
                 <Accent>Elevating</Accent> Lifestyles<span className="text-gold">.</span>
-              </motion.span>
+              </m.span>
             </span>
           </h1>
 
-          <motion.p
+          <m.p
             {...line(0.7)}
             className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
           >
             Premium home furnishings and interior fit-out solutions designed to transform your space
             with style, quality and comfort.
-          </motion.p>
+          </m.p>
 
-          <motion.div {...line(0.85)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <m.div {...line(0.85)} className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold !px-7 !py-4">
               <IconWhatsApp className="h-5 w-5" />
               Chat on WhatsApp
@@ -86,9 +86,9 @@ export default function Hero() {
               Explore Our Work
               <IconArrow className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </button>
-          </motion.div>
+          </m.div>
 
-          <motion.ul
+          <m.ul
             {...line(1)}
             className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] font-semibold tracking-[0.18em] text-white/55 uppercase"
           >
@@ -102,11 +102,11 @@ export default function Hero() {
               <span className="h-4 w-px bg-white/20" />
               Supply &amp; fitting countrywide
             </li>
-          </motion.ul>
+          </m.ul>
         </div>
 
         {/* Floating expertise card */}
-        <motion.aside
+        <m.aside
           initial={{ opacity: 0, y: 50, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, ease: EASE, delay: 1 }}
@@ -131,8 +131,8 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-        </motion.aside>
-      </motion.div>
+        </m.aside>
+      </m.div>
 
     </section>
   )

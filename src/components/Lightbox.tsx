@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
+import { AnimatePresence, m, type PanInfo } from 'framer-motion'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { categoryTitle, type Photo } from '../data/gallery'
 import { waLink } from '../data/site'
@@ -87,7 +87,7 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
   return (
     <AnimatePresence>
       {state && photo && (
-        <motion.div
+        <m.div
           ref={dialogRef}
           className="fixed inset-0 z-[70] flex flex-col bg-ink/[0.97] text-white backdrop-blur-xl"
           initial={{ opacity: 0 }}
@@ -120,7 +120,7 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
           {/* Image stage */}
           <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden px-2 sm:px-20">
             <AnimatePresence initial={false} custom={dir} mode="popLayout">
-              <motion.img
+              <m.img
                 key={photo.id + index}
                 src={photo.lg}
                 alt={photo.alt}
@@ -212,7 +212,7 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
               </a>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

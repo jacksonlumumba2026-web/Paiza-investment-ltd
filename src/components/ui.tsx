@@ -1,4 +1,4 @@
-import { motion, type Variants } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 export const EASE = [0.22, 1, 0.36, 1] as const
@@ -30,7 +30,7 @@ export function Reveal({
   y?: number
 }) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export function Reveal({
       transition={{ duration: 0.45, ease: EASE, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -56,7 +56,7 @@ export function Stagger({
   delay?: number
   as?: 'div' | 'ul'
 }) {
-  const Comp = as === 'ul' ? motion.ul : motion.div
+  const Comp = as === 'ul' ? m.ul : m.div
   return (
     <Comp
       className={className}
@@ -91,27 +91,27 @@ export function SectionHeading({
       gap={0.12}
       className={`${center ? 'mx-auto text-center' : ''} max-w-3xl ${className}`}
     >
-      <motion.p
+      <m.p
         variants={fadeUp}
         className={`eyebrow ${dark ? 'text-gold' : 'text-ember'} ${center ? 'justify-center' : ''}`}
       >
         {eyebrow}
-      </motion.p>
-      <motion.h2
+      </m.p>
+      <m.h2
         variants={fadeUp}
         className={`display mt-5 text-[40px] sm:text-5xl lg:text-[64px] ${dark ? 'text-white' : 'text-ink'}`}
       >
         {title}
-      </motion.h2>
+      </m.h2>
       {text && (
-        <motion.p
+        <m.p
           variants={fadeUp}
           className={`mt-6 text-base leading-relaxed sm:text-lg ${
             dark ? 'text-white/60' : 'text-ink/60'
           } ${center ? 'mx-auto max-w-2xl' : 'max-w-xl'}`}
         >
           {text}
-        </motion.p>
+        </m.p>
       )}
     </Stagger>
   )

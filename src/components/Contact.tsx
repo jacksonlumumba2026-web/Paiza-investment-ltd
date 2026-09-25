@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { useState, type FormEvent } from 'react'
 import { SERVICE_OPTIONS } from '../data/services'
 import { SITE, directionsLink, waLink } from '../data/site'
@@ -150,7 +150,7 @@ export default function Contact() {
                     ['phone', 'Phone number', 'tel', 'tel'],
                   ] as const
                 ).map(([k, l, type, ac]) => (
-                  <motion.div key={k} variants={fadeUp}>
+                  <m.div key={k} variants={fadeUp}>
                     <div className="relative">
                       <input
                         id={k}
@@ -172,10 +172,10 @@ export default function Contact() {
                         {errors[k]}
                       </p>
                     )}
-                  </motion.div>
+                  </m.div>
                 ))}
 
-                <motion.div variants={fadeUp}>
+                <m.div variants={fadeUp}>
                   <div className="relative">
                     <input
                       id="email"
@@ -196,9 +196,9 @@ export default function Contact() {
                       {errors.email}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp}>
+                <m.div variants={fadeUp}>
                   <div className="relative">
                     <select
                       id="service"
@@ -228,9 +228,9 @@ export default function Contact() {
                       {errors.service}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="relative sm:col-span-2">
+                <m.div variants={fadeUp} className="relative sm:col-span-2">
                   <textarea
                     id="message"
                     rows={5}
@@ -242,7 +242,7 @@ export default function Contact() {
                   <label htmlFor="message" className={labelCls}>
                     Message
                   </label>
-                </motion.div>
+                </m.div>
               </Stagger>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">

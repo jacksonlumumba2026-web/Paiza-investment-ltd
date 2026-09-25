@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import {
   IconCompass,
   IconDiamond,
@@ -34,12 +34,12 @@ export default function WhyChoose() {
 
         <Stagger gap={0.08} className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-7">
           {REASONS.map(({ icon: Icon, title, text }, i) => (
-            <motion.div
+            <m.div
               key={title}
               variants={fadeUp}
               className="group relative overflow-hidden rounded-[26px] border border-ink/[0.07] bg-white p-8 transition-all duration-700 ease-lux hover:-translate-y-1 hover:border-transparent hover:bg-ink hover:shadow-[0_40px_70px_-35px_rgba(13,12,11,0.6)] lg:p-10"
             >
-              <span className="pointer-events-none absolute top-5 right-7 font-serif text-7xl leading-none text-ink/[0.04] italic transition-colors duration-700 group-hover:text-white/[0.05]">
+              <span aria-hidden className="pointer-events-none absolute top-5 right-7 font-serif text-7xl leading-none text-ink/[0.04] italic transition-colors duration-700 group-hover:text-white/[0.05]">
                 {i + 1}
               </span>
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sand text-ink transition-all duration-700 group-hover:bg-gold">
@@ -52,7 +52,7 @@ export default function WhyChoose() {
                 {text}
               </p>
               <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-gold to-ember transition-all duration-700 ease-lux group-hover:w-full" />
-            </motion.div>
+            </m.div>
           ))}
         </Stagger>
       </div>

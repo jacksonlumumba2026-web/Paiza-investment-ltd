@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { CATEGORIES, PHOTOS, categoryTitle, photosFor, srcSet, type Photo } from '../data/gallery'
 import { useSite, type Filter } from '../context'
@@ -89,7 +89,7 @@ export default function Gallery() {
                   }`}
                 >
                   {on && (
-                    <motion.span
+                    <m.span
                       layoutId="gallery-pill"
                       className="absolute inset-0 rounded-full bg-gold"
                       transition={{ duration: 0.5, ease: EASE }}
@@ -111,7 +111,7 @@ export default function Gallery() {
             <div key={ci} className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4 lg:gap-6">
               <AnimatePresence initial={false} mode="popLayout">
                 {col.map(({ photo, index }) => (
-                  <motion.button
+                  <m.button
                     key={`${filter}-${photo.id}`}
                     type="button"
                     onClick={() => openLightbox(list, index)}
@@ -148,7 +148,7 @@ export default function Gallery() {
                         <IconExpand className="h-4 w-4" />
                       </span>
                     </div>
-                  </motion.button>
+                  </m.button>
                 ))}
               </AnimatePresence>
             </div>
@@ -158,7 +158,7 @@ export default function Gallery() {
         {/* Load more */}
         <div className="mt-14 flex flex-col items-center gap-5">
           <div className="h-1 w-48 overflow-hidden rounded-full bg-ink/10">
-            <motion.div
+            <m.div
               className="h-full bg-ink"
               animate={{ width: `${(shown.length / list.length) * 100}%` }}
               transition={{ duration: 0.6, ease: EASE }}

@@ -15,7 +15,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Do you deliver and install outside Kikuyu and Nairobi?',
-    a: 'Yes. We offer supply and fitting countrywide, with professional installation by our own team.',
+    a: 'Yes. We offer supply and fitting countrywide, with professional installation.',
   },
   {
     q: 'Can you make kitchens and wardrobes to fit my space?',

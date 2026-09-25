@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { photoById, srcSet } from '../data/gallery'
 import { SITE, waLink } from '../data/site'
 import { IconPhone, IconWhatsApp } from './icons'
@@ -24,19 +24,19 @@ export default function FinalCTA() {
         <div className="absolute -right-24 -bottom-24 -z-10 h-80 w-80 rounded-full bg-gold/25 blur-[100px]" />
 
         <Stagger className="container-lux py-24 text-center sm:py-32 lg:py-40">
-          <motion.p variants={fadeUp} className="eyebrow justify-center text-gold">
+          <m.p variants={fadeUp} className="eyebrow justify-center text-gold">
             Let’s talk
-          </motion.p>
-          <motion.h2
+          </m.p>
+          <m.h2
             variants={fadeUp}
             className="display mx-auto mt-6 max-w-4xl text-[44px] sm:text-6xl lg:text-[88px]"
           >
             Ready to <Accent>transform</Accent> your space?
-          </motion.h2>
-          <motion.p variants={fadeUp} className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-white/65">
+          </m.h2>
+          <m.p variants={fadeUp} className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-white/65">
             Let’s discuss your vision and create a space that reflects your style, quality and comfort.
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-3 sm:flex-row">
+          </m.p>
+          <m.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold !px-8 !py-5">
               <IconWhatsApp className="h-5 w-5" />
               Chat with us on WhatsApp
@@ -45,7 +45,7 @@ export default function FinalCTA() {
               <IconPhone className="h-5 w-5" />
               Call {SITE.phoneDisplay}
             </a>
-          </motion.div>
+          </m.div>
         </Stagger>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { photoById } from '../data/gallery'
 import { Accent, Reveal, Stagger, fadeUp } from './ui'
 
@@ -12,23 +12,23 @@ export default function About() {
 
       <div className="container-lux relative grid items-center gap-16 lg:grid-cols-12 lg:gap-20">
         <Stagger gap={0.08} className="lg:col-span-6">
-          <motion.p variants={fadeUp} className="eyebrow text-gold">
+          <m.p variants={fadeUp} className="eyebrow text-gold">
             About Paiza Investment Ltd
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="display mt-5 text-[40px] sm:text-5xl lg:text-[64px]">
+          </m.p>
+          <m.h2 variants={fadeUp} className="display mt-5 text-[40px] sm:text-5xl lg:text-[64px]">
             Beautiful spaces. <Accent>Thoughtfully designed.</Accent>
-          </motion.h2>
-          <motion.p variants={fadeUp} className="mt-8 text-lg leading-relaxed text-white/75">
+          </m.h2>
+          <m.p variants={fadeUp} className="mt-8 text-lg leading-relaxed text-white/75">
             From modern kitchens and wardrobes to elegant sofas, curtains, TV panels and complete
             interior fit-outs, we bring design, quality craftsmanship and professional installation
             together to create spaces that feel truly yours.
-          </motion.p>
-          <motion.blockquote
+          </m.p>
+          <m.blockquote
             variants={fadeUp}
             className="mt-10 border-l-2 border-gold pl-6 font-serif text-2xl leading-snug italic sm:text-[28px]"
           >
             “We don’t just furnish homes, we create experiences.”
-          </motion.blockquote>
+          </m.blockquote>
         </Stagger>
 
         <div className="relative grid grid-cols-5 gap-4 lg:col-span-6">

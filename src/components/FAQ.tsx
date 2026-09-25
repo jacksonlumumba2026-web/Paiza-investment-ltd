@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FAQS } from '../data/faq'
 import { waLink } from '../data/site'
 import { IconPlus, IconWhatsApp } from './icons'
@@ -29,7 +29,7 @@ export default function FAQ() {
         {/* Native <details> keeps every answer in the page HTML for search engines. */}
         <Stagger gap={0.07} className="divide-y divide-ink/10 border-y border-ink/10 lg:col-span-7">
           {FAQS.map(({ q, a }, i) => (
-            <motion.details key={q} variants={fadeUp} className="group" open={i === 0}>
+            <m.details key={q} variants={fadeUp} className="group" open={i === 0}>
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left text-lg font-extrabold tracking-tight [&::-webkit-details-marker]:hidden">
                 <h3>{q}</h3>
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-ink/15 transition-all duration-500 ease-lux group-open:rotate-45 group-open:border-gold group-open:bg-gold">
@@ -37,7 +37,7 @@ export default function FAQ() {
                 </span>
               </summary>
               <p className="max-w-2xl pr-16 pb-7 leading-relaxed text-ink/65">{a}</p>
-            </motion.details>
+            </m.details>
           ))}
         </Stagger>
       </div>
