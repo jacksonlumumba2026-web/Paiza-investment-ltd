@@ -22,8 +22,9 @@ const field =
 const labelCls =
   'pointer-events-none absolute top-2 left-5 text-[13px] font-bold tracking-[0.08em] text-ink/70 uppercase'
 
-export default function Contact() {
-  const [form, setForm] = useState<Form>(EMPTY)
+/** `service` preselects the service in the form, e.g. on a service page. */
+export default function Contact({ service = '' }: { service?: string }) {
+  const [form, setForm] = useState<Form>({ ...EMPTY, service })
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({})
   const set = (k: keyof Form) => (e: { target: { value: string } }) => setForm((f) => ({ ...f, [k]: e.target.value }))
 

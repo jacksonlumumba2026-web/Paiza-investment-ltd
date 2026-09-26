@@ -6,7 +6,7 @@ import { Accent, Stagger, fadeUp } from './ui'
 
 const bg = photoById('0211')
 
-export default function FinalCTA() {
+export default function FinalCTA({ message }: { message?: string }) {
   return (
     <section className="bg-cream px-3 pb-3 sm:px-5 sm:pb-5">
       <div className="relative isolate overflow-hidden rounded-[32px] bg-ink text-white">
@@ -16,7 +16,7 @@ export default function FinalCTA() {
           sizes="100vw"
           width={bg.w}
           height={bg.h}
-          alt=""
+          alt={bg.alt}
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
         />
@@ -37,7 +37,7 @@ export default function FinalCTA() {
             Let’s discuss your vision and create a space that reflects your style, quality and comfort.
           </m.p>
           <m.div variants={fadeUp} className="mt-12 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold !px-8 !py-5">
+            <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-gold !px-8 !py-5">
               <IconWhatsApp className="h-5 w-5" />
               Chat with us on WhatsApp
             </a>

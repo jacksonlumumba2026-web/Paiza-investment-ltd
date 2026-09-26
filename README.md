@@ -47,11 +47,20 @@ The domain is also written in `index.html` (canonical, link-preview and business
   so search engines and link-preview crawlers see all text, headings and image descriptions without running JavaScript.
   In the browser, React takes over that HTML (`hydrateRoot` in `src/main.tsx`). Components must not read `window`
   or `document` while rendering — only inside effects and event handlers.
-- **Page title and description:** `index.html`.
-- **Business details for Google** (`FurnitureStore`: name, phone, email, address, services, logo): JSON-LD in `index.html`.
+- **Service pages:** one page per service at `/kitchens/`, `/wardrobes/`, `/gypsum-ceilings/`, `/tv-wall-panels/`,
+  `/curtains/`, `/recliner-sofas/`, `/sofas/` and `/arabic-sofas/`, so each service can rank for its own searches.
+  Content, titles and descriptions live in `src/data/servicePages.ts`; the layout is `src/components/ServicePage.tsx`.
+  The build writes each one to `dist/<slug>/index.html` with its own title, description, canonical URL, link-preview
+  image (`dist/og/<slug>.jpg`, cropped from the lead photo) and Service, BreadcrumbList and FAQPage JSON-LD.
+  Keep the copy to facts the client has confirmed or the photos show — no prices, lead times or warranties.
+- **Page title and description (homepage):** `index.html`. Service pages: `src/data/servicePages.ts`.
+- **Business details for Google** (`HomeAndConstructionBusiness` + `FurnitureStore`: name, phone, email, address,
+  area served, services with their page URLs, logo): JSON-LD in `index.html`. Add `openingHoursSpecification` once the
+  client confirms opening hours, and `aggregateRating` only when there are real, published reviews.
 - **FAQ:** `src/data/faq.ts` feeds both the FAQ section and the FAQPage JSON-LD added by the prerender step.
   Keep answers to facts the client has confirmed.
-- **Sitemap:** `dist/sitemap.xml` is generated at build time and lists every gallery photo for Google Images.
+- **Sitemap:** `dist/sitemap.xml` is generated at build time and lists the homepage and every service page, each with
+  its photos for Google Images.
 - **Performance:** fonts are bundled (`@fontsource`, Latin subset; no Google Fonts requests); animation features load after
   first paint (`LazyMotion` in `App.tsx`, `src/motionFeatures.ts`), so components use `m.` rather than `motion.`.
 - **Link previews and icons:** `public/og-image.jpg` (1200×630), `apple-touch-icon.png`, `icon-192.png`, `logo-512.png` and
@@ -63,6 +72,7 @@ The domain is also written in `index.html` (canonical, link-preview and business
 | --- | --- |
 | Phone, WhatsApp, email, locations, Google Maps embed | `src/data/site.ts` |
 | The 8 services, descriptions, WhatsApp messages, showcase photos | `src/data/services.ts` |
+| Service page text, FAQs, titles and meta descriptions | `src/data/servicePages.ts` |
 | Gallery photos, categories, order and alt text | `src/data/gallery.ts` |
 | Logo (vector recreation of the flyer logo; reference in `photos/brand/`) | `src/components/Logo.tsx`, `public/favicon.svg` |
 

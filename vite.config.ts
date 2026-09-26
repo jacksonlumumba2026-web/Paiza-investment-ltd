@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// base: './' keeps the build portable (GitHub Pages sub-path, Netlify, cPanel, etc.)
+// Absolute URLs: the site has pages below the root (e.g. /kitchens/), served from paiza-investment.co.ke.
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [react(), tailwindcss()],
 })

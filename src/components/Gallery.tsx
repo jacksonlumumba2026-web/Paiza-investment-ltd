@@ -1,6 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion'
-import { useEffect, useMemo, useState } from 'react'
-import { CATEGORIES, PHOTOS, categoryTitle, photosFor, srcSet, type Photo } from '../data/gallery'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { CATEGORIES, PHOTOS, categoryTitle, photosFor, srcSet, type CategoryId, type Photo } from '../data/gallery'
 import { useSite, type Filter } from '../context'
 import { IconExpand, IconPlus } from './icons'
 import { Accent, EASE, Reveal, SectionHeading } from './ui'
@@ -32,22 +32,42 @@ function distribute(photos: Photo[], cols: number) {
   return columns
 }
 
-export default function Gallery() {
-  const { filter, setFilter, openLightbox } = useSite()
+/**
+ * The homepage shows every category, filtered through the shared site state.
+ * A service page passes `scope` to show only its own categories.
+ */
+export default function Gallery({
+  scope,
+  title,
+  text,
+}: {
+  scope?: CategoryId[]
+  title?: ReactNode
+  text?: string
+}) {
+  const site = useSite()
+  const [scopedFilter, setScopedFilter] = useState<Filter>('all')
+  const filter = scope ? scopedFilter : site.filter
+  const setFilter = scope ? setScopedFilter : site.setFilter
+  const { openLightbox } = site
   const [visible, setVisible] = useState(PAGE)
   const cols = useColumns()
 
-  const filters = useMemo(
-    () => [
-      { id: 'all' as Filter, label: 'All', count: PHOTOS.length },
-      ...CATEGORIES.map((c) => ({ id: c.id as Filter, label: c.label, count: photosFor(c.id).length })).filter(
-        (c) => c.count > 0,
-      ),
-    ],
-    [],
+  const pool = useMemo(
+    () => (scope ? PHOTOS.filter((p) => p.cats.some((c) => scope.includes(c))) : PHOTOS),
+    [scope],
   )
 
-  const list = useMemo(() => photosFor(filter), [filter])
+  const filters = useMemo(() => {
+    const cats = scope ? CATEGORIES.filter((c) => scope.includes(c.id)) : CATEGORIES
+    const chips = cats
+      .map((c) => ({ id: c.id as Filter, label: c.label, count: photosFor(c.id).length }))
+      .filter((c) => c.count > 0)
+    // A single-category page needs no filter bar.
+    return chips.length > 1 ? [{ id: 'all' as Filter, label: 'All', count: pool.length }, ...chips] : []
+  }, [scope, pool])
+
+  const list = useMemo(() => (filter === 'all' ? pool : photosFor(filter)), [filter, pool])
   const shown = list.slice(0, visible)
   const columns = useMemo(() => distribute(shown, cols), [shown, cols])
 
@@ -60,11 +80,13 @@ export default function Gallery() {
           <SectionHeading
             eyebrow="Our Work"
             title={
-              <>
-                Explore our <Accent>designs.</Accent>
-              </>
+              title ?? (
+                <>
+                  Explore our <Accent>designs.</Accent>
+                </>
+              )
             }
-            text="Take a look at some of the spaces, furniture and interior solutions we have worked on."
+            text={text ?? 'Take a look at some of the spaces, furniture and interior solutions we have worked on.'}
           />
           <Reveal className="shrink-0 lg:pb-3">
             <p className="text-sm text-ink/65">
@@ -75,38 +97,40 @@ export default function Gallery() {
         </div>
 
         {/* Filters */}
-        <Reveal className="sticky top-[68px] z-20 -mx-5 mt-12 bg-cream/85 px-5 py-3 backdrop-blur-lg sm:-mx-8 sm:px-8 lg:static lg:mx-0 lg:mt-16 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
-          <div role="group" aria-label="Filter projects by category" className="scrollbar-none flex gap-2 overflow-x-auto lg:flex-wrap">
-            {filters.map((f) => {
-              const on = f.id === filter
-              return (
-                <button
-                  key={f.id}
-                  aria-pressed={on}
-                  onClick={() => setFilter(f.id)}
-                  className={`relative min-h-11 shrink-0 rounded-full px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] uppercase transition-colors duration-300 ${
-                    on ? 'text-ink' : 'text-ink/65 ring-1 ring-ink/10 hover:text-ink hover:ring-ink/30'
-                  }`}
-                >
-                  {on && (
-                    <m.span
-                      layoutId="gallery-pill"
-                      className="absolute inset-0 rounded-full bg-gold"
-                      transition={{ duration: 0.5, ease: EASE }}
-                    />
-                  )}
-                  <span className="relative">
-                    {f.label}
-                    <span className={`ml-1.5 ${on ? 'text-ink/60' : 'text-ink/65'}`}>{f.count}</span>
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-        </Reveal>
+        {filters.length > 0 && (
+          <Reveal className="sticky top-[68px] z-20 -mx-5 mt-12 bg-cream/85 px-5 py-3 backdrop-blur-lg sm:-mx-8 sm:px-8 lg:static lg:mx-0 lg:mt-16 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
+            <div role="group" aria-label="Filter projects by category" className="scrollbar-none flex gap-2 overflow-x-auto lg:flex-wrap">
+              {filters.map((f) => {
+                const on = f.id === filter
+                return (
+                  <button
+                    key={f.id}
+                    aria-pressed={on}
+                    onClick={() => setFilter(f.id)}
+                    className={`relative min-h-11 shrink-0 rounded-full px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] uppercase transition-colors duration-300 ${
+                      on ? 'text-ink' : 'text-ink/65 ring-1 ring-ink/10 hover:text-ink hover:ring-ink/30'
+                    }`}
+                  >
+                    {on && (
+                      <m.span
+                        layoutId="gallery-pill"
+                        className="absolute inset-0 rounded-full bg-gold"
+                        transition={{ duration: 0.5, ease: EASE }}
+                      />
+                    )}
+                    <span className="relative">
+                      {f.label}
+                      <span className={`ml-1.5 ${on ? 'text-ink/60' : 'text-ink/65'}`}>{f.count}</span>
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </Reveal>
+        )}
 
         {/* Masonry */}
-        <div className="mt-8 flex gap-3 sm:gap-4 lg:mt-10 lg:gap-6">
+        <div className={`flex gap-3 sm:gap-4 lg:gap-6 ${filters.length > 0 ? 'mt-8 lg:mt-10' : 'mt-12 lg:mt-16'}`}>
           {columns.map((col, ci) => (
             <div key={ci} className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4 lg:gap-6">
               <AnimatePresence initial={false} mode="popLayout">
