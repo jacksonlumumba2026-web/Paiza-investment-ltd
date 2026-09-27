@@ -5,10 +5,11 @@ import { IconClose, IconMenu, IconPhone, IconWhatsApp } from './icons'
 import Logo from './Logo'
 import { EASE } from './ui'
 
-export default function Navbar() {
+/** `current` marks the active item on pages without the homepage sections, e.g. a service page. */
+export default function Navbar({ current }: { current?: string }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('#home')
+  const [active, setActive] = useState(current ?? '/#home')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -19,10 +20,11 @@ export default function Navbar() {
 
   // Highlight the nav item for the section currently in view.
   useEffect(() => {
-    const ids = NAV.map((n) => n.href.slice(1))
+    if (current) return
+    const ids = NAV.map((n) => n.href.split('#')[1])
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`))
+        entries.forEach((e) => e.isIntersecting && setActive(`/#${e.target.id}`))
       },
       { rootMargin: '-45% 0px -50% 0px' },
     )
@@ -31,7 +33,7 @@ export default function Navbar() {
       if (el) io.observe(el)
     })
     return () => io.disconnect()
-  }, [])
+  }, [current])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -50,7 +52,7 @@ export default function Navbar() {
         }`}
       >
         <nav className="container-lux flex items-center justify-between" aria-label="Main">
-          <a href="#home" aria-label={`${SITE.name} — home`} onClick={() => setOpen(false)}>
+          <a href="/#home" aria-label={`${SITE.name} — home`} onClick={() => setOpen(false)}>
             <Logo />
           </a>
 

@@ -11,14 +11,18 @@ import Hero from './components/Hero'
 import Lightbox, { type LightboxState } from './components/Lightbox'
 import Navbar from './components/Navbar'
 import Process from './components/Process'
+import ServicePage from './components/ServicePage'
 import Services from './components/Services'
 import WhyChoose from './components/WhyChoose'
 import { SiteContext, type Filter } from './context'
 import { CATEGORIES, type Photo } from './data/gallery'
+import { pageForPath } from './data/servicePages'
 
 const loadMotionFeatures = () => import('./motionFeatures').then((mod) => mod.default)
 
-export default function App() {
+/** `path` is the URL path: "/" for the homepage, e.g. "/kitchens/" for a service page. */
+export default function App({ path = '/' }: { path?: string }) {
+  const page = pageForPath(path)
   const [filter, setFilter] = useState<Filter>('all')
   const [lightbox, setLightbox] = useState<LightboxState>(null)
 
@@ -30,6 +34,7 @@ export default function App() {
   // Category links, e.g. paiza-investment.co.ke/#kitchens, open "Our Work" already filtered
   // (used in the WhatsApp Business greeting message and in ads).
   useEffect(() => {
+    if (page) return
     const applyHash = () => {
       const id = decodeURIComponent(window.location.hash.slice(1))
       const category = CATEGORIES.find((c) => c.id === id)
@@ -42,7 +47,7 @@ export default function App() {
     applyHash()
     window.addEventListener('hashchange', applyHash)
     return () => window.removeEventListener('hashchange', applyHash)
-  }, [])
+  }, [page])
 
   const openLightbox = useCallback(
     (photos: Photo[], index: number, label?: string) => setLightbox({ photos, index, label }),
@@ -65,20 +70,26 @@ export default function App() {
           >
             Skip to content
           </a>
-          <Navbar />
+          <Navbar current={page ? '/#services' : undefined} />
           <main id="main" tabIndex={-1} className="outline-none">
-            <Hero />
-            <Services />
-            <Gallery />
-            <About />
-            <WhyChoose />
-            <Process />
-            <FAQ />
-            <FinalCTA />
-            <Contact />
+            {page ? (
+              <ServicePage page={page} />
+            ) : (
+              <>
+                <Hero />
+                <Services />
+                <Gallery />
+                <About />
+                <WhyChoose />
+                <Process />
+                <FAQ />
+                <FinalCTA />
+                <Contact />
+              </>
+            )}
           </main>
           <Footer />
-          <FloatingWhatsApp />
+          <FloatingWhatsApp message={page?.service.message} />
           <Lightbox state={lightbox} onClose={closeLightbox} />
         </SiteContext.Provider>
       </LazyMotion>

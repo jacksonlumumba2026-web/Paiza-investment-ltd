@@ -5,12 +5,13 @@ import { renderToString } from 'react-dom/server'
 import App from './App'
 
 export { FAQS } from './data/faq'
-export { PHOTOS, categoryTitle } from './data/gallery'
+export { PHOTOS, categoryTitle, photoById, photosFor } from './data/gallery'
+export { SERVICE_PAGES } from './data/servicePages'
 
-export function render() {
+export function render(path = '/') {
   return renderToString(
     <StrictMode>
-      <App />
+      <App path={path} />
     </StrictMode>,
   )
 }

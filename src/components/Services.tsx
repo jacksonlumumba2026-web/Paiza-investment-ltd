@@ -2,7 +2,7 @@ import { m } from 'framer-motion'
 import { photoById } from '../data/gallery'
 import { SERVICES, type Service } from '../data/services'
 import { waLink } from '../data/site'
-import { useSite } from '../context'
+import { pageForService, pagePath } from '../data/servicePages'
 import { IconArrowUpRight, IconWhatsApp } from './icons'
 import { Accent, SectionHeading, Stagger, fadeUp } from './ui'
 
@@ -27,7 +27,7 @@ function SheerPlaceholder({ className = '' }: { className?: string }) {
 }
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const { showWork } = useSite()
+  const page = pageForService(service.id)
   const cover = service.cover ? photoById(service.cover) : null
 
   return (
@@ -64,15 +64,15 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/60">{service.description}</p>
 
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-ink/[0.08] pt-5">
-          {service.category ? (
-            <button
-              type="button"
-              onClick={() => showWork(service.category!)}
+          {page ? (
+            <a
+              href={pagePath(page)}
               className="group/link inline-flex min-h-11 items-center gap-1.5 text-[12px] font-bold tracking-[0.1em] whitespace-nowrap text-ink uppercase"
+              aria-label={`${service.name}: see our work and details`}
             >
               View Work
               <IconArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-            </button>
+            </a>
           ) : (
             <span className="text-[12px] font-bold tracking-[0.1em] whitespace-nowrap text-ink/65 uppercase">Samples in store</span>
           )}

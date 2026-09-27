@@ -1,7 +1,7 @@
 import { m, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { photoById } from '../data/gallery'
-import { SERVICES } from '../data/services'
+import { SERVICE_PAGES, pagePath } from '../data/servicePages'
 import { SITE, waLink } from '../data/site'
 import { useSite } from '../context'
 import { IconArrow, IconWhatsApp } from './icons'
@@ -120,13 +120,13 @@ export default function Hero() {
           </div>
           <p className="mt-5 text-[12px] font-bold tracking-[0.24em] text-white/50 uppercase">Our expertise</p>
           <ul className="mt-3 flex flex-wrap gap-2">
-            {SERVICES.map((s) => (
-              <li key={s.id}>
+            {SERVICE_PAGES.map((p) => (
+              <li key={p.slug}>
                 <a
-                  href="#services"
+                  href={pagePath(p)}
                   className="block rounded-full border border-white/10 px-3 py-1.5 text-[12px] font-medium text-white/80 transition hover:border-gold/60 hover:text-white"
                 >
-                  {s.name}
+                  {p.service.name}
                 </a>
               </li>
             ))}

@@ -1,22 +1,10 @@
 import { NAV, SITE, directionsLink, waLink } from '../data/site'
-import { useSite } from '../context'
-import type { Filter } from '../context'
+import { SERVICE_PAGES, pagePath } from '../data/servicePages'
 import { IconArrowUpRight, IconWhatsApp } from './icons'
 import Logo from './Logo'
 import { Reveal } from './ui'
 
-const FOOTER_SERVICES: { label: string; filter?: Filter; href?: string }[] = [
-  { label: 'Modern Kitchens', filter: 'kitchens' },
-  { label: 'Wardrobes', filter: 'wardrobes' },
-  { label: 'TV Panels', filter: 'tv-panels' },
-  { label: 'Curtains', filter: 'curtains' },
-  { label: 'Rods & Rails', filter: 'rods' },
-  { label: 'Sofas', filter: 'sofas' },
-  { label: 'Interior Fit-Out', filter: 'installations' },
-]
-
 export default function Footer() {
-  const { showWork } = useSite()
   const linkCls = 'inline-flex min-h-11 min-w-11 items-center text-[15px] text-white/70 transition-colors hover:text-gold'
 
   return (
@@ -53,17 +41,11 @@ export default function Footer() {
             <div>
               <h4 className="text-[12px] font-bold tracking-[0.24em] text-gold uppercase">Services</h4>
               <ul className="mt-4">
-                {FOOTER_SERVICES.map((s) => (
-                  <li key={s.label}>
-                    {s.filter ? (
-                      <button type="button" onClick={() => showWork(s.filter)} className={linkCls}>
-                        {s.label}
-                      </button>
-                    ) : (
-                      <a href={s.href} className={linkCls}>
-                        {s.label}
-                      </a>
-                    )}
+                {SERVICE_PAGES.map((p) => (
+                  <li key={p.slug}>
+                    <a href={pagePath(p)} className={linkCls}>
+                      {p.short}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -112,7 +94,7 @@ export default function Footer() {
           </p>
           <p className="flex items-center gap-3 tracking-[0.2em] uppercase">
             {SITE.tagline}
-            <a href="#home" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition hover:border-gold hover:text-gold" aria-label="Back to top">
+            <a href="#" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition hover:border-gold hover:text-gold" aria-label="Back to top">
               <IconArrowUpRight className="h-4 w-4 -rotate-45" />
             </a>
           </p>

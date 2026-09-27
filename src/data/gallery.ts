@@ -57,8 +57,8 @@ const group = (cat: CategoryId, entries: Entry[]): Photo[] =>
       cats: [cat, ...extra],
       w: dims[id].w,
       h: dims[id].h,
-      sm: `work/${id}-sm.webp`,
-      lg: `work/${id}-lg.webp`,
+      sm: `/work/${id}-sm.webp`,
+      lg: `/work/${id}-lg.webp`,
     }
   })
 

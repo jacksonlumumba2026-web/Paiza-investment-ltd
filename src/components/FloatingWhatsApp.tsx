@@ -6,7 +6,7 @@ import { IconWhatsApp } from './icons'
 /** Sections with their own WhatsApp buttons; the bubble steps aside so it never covers them. */
 const HAS_OWN_BUTTONS = ['#services', '#contact', 'footer']
 
-export default function FloatingWhatsApp() {
+export default function FloatingWhatsApp({ message }: { message?: string }) {
   const [pastHero, setPastHero] = useState(false)
   const [blocked, setBlocked] = useState(false)
 
@@ -39,7 +39,7 @@ export default function FloatingWhatsApp() {
     <AnimatePresence>
       {pastHero && !blocked && (
         <m.a
-          href={waLink()}
+          href={waLink(message)}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with Paiza on WhatsApp"
