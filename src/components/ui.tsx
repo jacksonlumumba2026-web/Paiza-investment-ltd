@@ -1,5 +1,5 @@
 import { m, type Variants } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -49,16 +49,19 @@ export function Stagger({
   gap = 0.06,
   delay = 0,
   as = 'div',
+  ref,
 }: {
   children: ReactNode
   className?: string
   gap?: number
   delay?: number
   as?: 'div' | 'ul'
+  ref?: Ref<HTMLDivElement>
 }) {
   const Comp = as === 'ul' ? m.ul : m.div
   return (
     <Comp
+      ref={ref as Ref<HTMLDivElement & HTMLUListElement>}
       className={className}
       variants={stagger(gap, delay)}
       initial="hidden"

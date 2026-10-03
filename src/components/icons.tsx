@@ -129,3 +129,15 @@ export const IconMenu = (props: P) => (
     <path d="M4 8h16M4 16h10" />
   </svg>
 )
+
+export const IconPause = (props: P) => (
+  <svg {...base(props)}>
+    <path d="M9 6v12M15 6v12" />
+  </svg>
+)
+
+export const IconPlay = (props: P) => (
+  <svg {...base(props)}>
+    <path d="M8 5.5v13l10-6.5z" />
+  </svg>
+)
