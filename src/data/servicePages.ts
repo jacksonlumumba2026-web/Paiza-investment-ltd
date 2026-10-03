@@ -382,13 +382,13 @@ export const SERVICE_PAGES: ServicePage[] = [
     h1: ['Elegant sofa', 'designs.'],
     intro: [
       'Your sofa is where family life happens. Paiza Investment Ltd offers sectionals, chaise sofas and accent chairs in rich fabrics — modern shapes built for real family living.',
-      'Browse our range below, from large L-shaped sectionals to compact two-seaters and our royal and Arabic-design sets.',
+      'Browse our range below, from large L-shaped sectionals to compact two-seaters, our Turkish modern sofas and our royal and Arabic-design sets.',
     ],
     optionsTitle: 'Sofa styles in our range',
     options: [
       { title: 'Simple L-shape sofa', text: 'A 4-seater L-shaped sofa with a chaise and channel-stitched seats, in tan leather-look or grey fabric.' },
       { title: 'L-shaped sectionals', text: 'Large corner sofas that seat the whole family.' },
-      { title: 'Chaise sofas', text: 'Sectionals with a chaise for stretching out.' },
+      { title: 'Turkish modern sofas', text: 'Velvet sets with gold detailing: Rixos, Romance, Romeo and the Nevada Sofa Bed.' },
       { title: 'Two-seaters', text: 'Compact sofas for smaller rooms, bedrooms and apartments.' },
       { title: 'Accent armchairs', text: 'Statement chairs to complete a living room.' },
       { title: 'Royal and Arabic designs', text: 'Carved frames, velvet and gold details — see our Arabic sofa page.' },
@@ -415,6 +415,10 @@ export const SERVICE_PAGES: ServicePage[] = [
         a: 'Our photos show the simple L-shape sofa, a 4-seater with a chaise, in tan leather-look and grey fabric. Message us on WhatsApp to ask about colours and get a quotation.',
       },
       {
+        q: 'Do you have Turkish sofas?',
+        a: 'Yes. Our Turkish modern sofas include the Rixos, Romance and Romeo sets and the Nevada Sofa Bed — velvet upholstery with gold detailing.',
+      },
+      {
         q: 'Do you have sofa beds?',
         a: 'Yes. Our range includes sofa beds, such as the Nevada Sofa Bed.',
       },
@@ -439,26 +443,26 @@ export const SERVICE_PAGES: ServicePage[] = [
     short: 'Arabic Sofas',
     title: 'Arabic & Royal Sofa Designs in Kenya | Paiza Investment',
     description:
-      'Arabic and royal-style sofa sets with carved frames, velvet and gold trim — Rixos, Romance, Romeo and more. See the range from Paiza Investment Ltd.',
+      'Arabic and royal-style sofa sets with carved frames, velvet and gold trim, plus matching coffee tables. See the range from Paiza Investment Ltd, Kikuyu.',
     h1: ['Arabic and royal', 'sofa designs.'],
     intro: [
       'For a living room that makes a statement, choose an Arabic or royal-style sofa set. Paiza Investment Ltd offers opulent sets with sculpted frames, gold accents and luxurious velvet upholstery.',
-      'Our range includes named models such as Rixos, Romance, Romeo and the Nevada Sofa Bed, alongside carved royal-style loveseats, armchairs and coffee tables.',
+      'Our range includes carved royal-style sofa sets, loveseats and armchairs, with matching coffee tables and a royal-style dining set.',
     ],
     optionsTitle: 'Arabic and royal designs',
     options: [
-      { title: 'Rixos', text: 'An Arabic-style velvet sofa set with gold trim and a round coffee table.' },
-      { title: 'Romance', text: 'A champagne Arabic-style set with a gold-accented base.' },
-      { title: 'Romeo', text: 'A grey tufted sofa and matching armchair with gold detailing.' },
-      { title: 'Nevada Sofa Bed', text: 'An emerald and cream Arabic-style set that opens into a bed.' },
-      { title: 'Royal loveseats and armchairs', text: 'Carved frames in white, black, mahogany and gold.' },
+      { title: 'Royal sofa sets', text: 'Full living-room sets in ivory, cream and gold with carved frames.' },
+      { title: 'Royal loveseats', text: 'Two-seaters in champagne, grey velvet, mint and ivory with carved frames.' },
+      { title: 'Carved armchairs', text: 'Statement armchairs in white and grey leather with embroidered cushions.' },
+      { title: 'Carved frames', text: 'White, black, dark wood and mahogany frames, many with gold detailing.' },
+      { title: 'Soft colours', text: 'Powder blue, mint, ivory and champagne upholstery for a light, elegant room.' },
       { title: 'Coffee tables and dining', text: 'Carved coffee tables and a royal-style dining set to match.' },
     ],
     sections: [
       {
         heading: 'Colours and finishes',
         paragraphs: [
-          'Choose from grey, ivory, champagne, emerald, powder blue and mint upholstery, with carved frames in white, black, dark wood and mahogany, many with gold detailing. Embroidered and damask cushions complete each set.',
+          'Choose from grey, ivory, champagne, powder blue and mint upholstery, with carved frames in white, black, dark wood and mahogany, many with gold detailing. Embroidered and damask cushions complete each set.',
         ],
       },
       {
@@ -472,8 +476,8 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     faqs: [
       {
-        q: 'Which Arabic sofa models do you have?',
-        a: 'Our range includes Rixos, Romance, Romeo and the Nevada Sofa Bed, plus royal-style loveseats, armchairs and coffee tables. Ask on WhatsApp for the latest models and colours.',
+        q: 'What Arabic and royal designs do you have?',
+        a: 'Our range includes carved royal-style sofa sets, loveseats and armchairs, plus matching coffee tables and a royal-style dining set. Ask on WhatsApp for the latest designs and colours.',
       },
       {
         q: 'Do you have matching coffee tables?',
