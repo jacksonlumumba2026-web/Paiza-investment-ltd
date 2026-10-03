@@ -196,6 +196,7 @@ const TURKISH = group('turkish', [
   ['0242', 'Champagne Turkish modern sofa set with gold-accented base', ['sofas'], 'Romance'],
   ['0241', 'Silver-grey velvet Turkish modern sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
   ['0244', 'Emerald and cream Turkish modern sofa bed set', ['sofas'], 'Nevada Sofa Bed'],
+  ['0157', 'Turkish modern sofa set in beige and grey velvet with gold-ringed arms', ['sofas']],
 ])
 
 // Royal and Arabic-design sofas are also listed under Sofas, as the client asked.
@@ -209,7 +210,6 @@ const ARABIC = group('arabic', [
   ['0063', 'Royal-style loveseat with carved dark-wood frame and damask cushions', ['sofas']],
   ['24-0024', 'Royal-style powder-blue sofa set with carved white frames', ['sofas']],
   ['24-0022', 'Royal-style mint loveseat with carved white frame', ['sofas']],
-  ['0157', 'Arabic-style sofa set with gold-trimmed arms', ['sofas']],
   ['0185', 'Royal-style armchair in grey leather with carved mahogany frame', ['sofas']],
   ['0172', 'Royal-style ivory loveseat with carved frame', ['sofas']],
   ['0171', 'Royal-style carved white armchair with embroidered cushion', ['sofas']],
