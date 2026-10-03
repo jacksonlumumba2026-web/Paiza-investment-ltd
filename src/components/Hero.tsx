@@ -115,7 +115,7 @@ export default function Hero() {
           <div className="relative overflow-hidden rounded-2xl">
             <img src={inset.sm} alt={inset.alt} width={inset.w} height={inset.h} className="aspect-[4/3] w-full object-cover" loading="lazy" />
             <span className="absolute top-3 left-3 rounded-full bg-ink/70 px-3 py-1 text-[12px] font-bold tracking-[0.2em] text-gold uppercase backdrop-blur">
-              Arabic Design
+              Turkish Modern
             </span>
           </div>
           <p className="mt-5 text-[12px] font-bold tracking-[0.24em] text-white/50 uppercase">Our expertise</p>

@@ -10,6 +10,7 @@ export type CategoryId =
   | 'recliners'
   | 'sofas'
   | 'arabic'
+  | 'turkish'
   | 'office'
   | 'flooring'
   | 'installations'
@@ -23,6 +24,7 @@ export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
   { id: 'rods', label: 'Rods & Rails', title: 'Curtain Rods & Rails' },
   { id: 'recliners', label: 'Recliners', title: 'Recliner Sofas' },
   { id: 'sofas', label: 'Sofas', title: 'Elegant Sofas' },
+  { id: 'turkish', label: 'Turkish Modern', title: 'Turkish Modern Sofas' },
   { id: 'arabic', label: 'Arabic Designs', title: 'Arabic Sofa Designs' },
   { id: 'flooring', label: 'SPC Flooring', title: 'SPC Flooring' },
   { id: 'office', label: 'Office Furniture', title: 'Office Furniture' },
@@ -188,17 +190,21 @@ const WARDROBES = group('wardrobes', [
   ['0115', 'Built-in white wardrobe being fitted on site', ['installations']],
 ])
 
+// Turkish modern sofas (the client's named models) are also listed under Sofas.
+const TURKISH = group('turkish', [
+  ['0243', 'Turkish modern velvet sofa set with gold trim and a round coffee table', ['sofas'], 'Rixos'],
+  ['0242', 'Champagne Turkish modern sofa set with gold-accented base', ['sofas'], 'Romance'],
+  ['0241', 'Silver-grey velvet Turkish modern sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
+  ['0244', 'Emerald and cream Turkish modern sofa bed set', ['sofas'], 'Nevada Sofa Bed'],
+])
+
 // Royal and Arabic-design sofas are also listed under Sofas, as the client asked.
 const ARABIC = group('arabic', [
-  ['0243', 'Arabic-style velvet sofa set with gold trim and a round coffee table', ['sofas'], 'Rixos'],
   ['0121', 'Royal-style cream sofa set with carved frames and black coffee table', ['sofas']],
   ['24-0025', 'Royal-style champagne loveseat with carved mahogany frame', ['sofas']],
-  ['0242', 'Champagne Arabic-style sofa set with gold-accented base', ['sofas'], 'Romance'],
   ['24-0016', 'Royal-style ivory and gold sofa set', ['sofas']],
   ['0033', 'Royal-style sofa set with carved white coffee tables', ['sofas']],
-  ['0241', 'Silver-grey velvet Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
   ['0099', 'Royal-style grey loveseat with carved black frame and gold cushions', ['sofas']],
-  ['0244', 'Emerald and cream Arabic-style living room sofa set', ['sofas'], 'Nevada Sofa Bed'],
   ['24-0030', 'Royal-style grey velvet loveseat with carved black and gold frame', ['sofas']],
   ['0063', 'Royal-style loveseat with carved dark-wood frame and damask cushions', ['sofas']],
   ['24-0024', 'Royal-style powder-blue sofa set with carved white frames', ['sofas']],
@@ -295,7 +301,7 @@ function interleave(groups: Photo[][]) {
 }
 
 export const PHOTOS: Photo[] = [
-  ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, ARABIC, TV_PANELS, RECLINERS, GYPSUM, RODS]),
+  ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, TURKISH, ARABIC, TV_PANELS, RECLINERS, GYPSUM, RODS]),
   ...FLOORING,
   ...OFFICE,
 ]
