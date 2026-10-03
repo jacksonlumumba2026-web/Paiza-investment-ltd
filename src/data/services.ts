@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     message: quote('your sofa designs'),
     category: 'sofas',
     cover: '0221',
-    showcase: ['0221', '24-0025', '0196', '0243', '0056', '0099'],
+    showcase: ['0221', 'sofa-lshape-tan', '0196', '24-0025', '0243', '0056'],
     galleryLabel: 'View all sofa designs',
   },
   {
@@ -107,6 +107,17 @@ export const SERVICES: Service[] = [
     showcase: ['0243', '24-0025', '0121', '24-0016', '0241', '0099'],
     galleryLabel: 'View all Arabic designs',
   },
+  {
+    id: 'flooring',
+    name: 'SPC Flooring',
+    description:
+      'Modern, high-quality SPC flooring — waterproof, fire-resistant and durable, in warm wood, grey and walnut finishes.',
+    message: quote('SPC Flooring'),
+    category: 'flooring',
+    cover: '02-0003',
+    showcase: ['02-0003', '02-0008', '02-0009'],
+    galleryLabel: 'View flooring colours',
+  },
 ]
 
 export const SERVICE_OPTIONS = [
@@ -119,5 +130,6 @@ export const SERVICE_OPTIONS = [
   'Recliner Sofas',
   'Elegant Sofa Designs',
   'Arabic Sofa Designs',
+  'SPC Flooring',
   'Other',
 ]

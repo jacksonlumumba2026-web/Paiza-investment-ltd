@@ -35,6 +35,8 @@ const EXCLUDE = new Set([
   // 24-0027 phone screenshot (= 0207); 24-0014 @bridgefurniture watermark.
   '24-0012', '24-0013', '24-0017', '24-0018', '24-0019', '24-0020',
   '24-0023', '24-0028', '24-0029', '24-0031', '24-0027', '24-0014',
+  // 2 Oct batch: 02-0000 re-send of 0171; 02-0001 phone screenshot of the website.
+  '02-0000', '02-0001',
 ])
 
 await mkdir(OUT, { recursive: true })

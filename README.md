@@ -48,7 +48,7 @@ The domain is also written in `index.html` (canonical, link-preview and business
   In the browser, React takes over that HTML (`hydrateRoot` in `src/main.tsx`). Components must not read `window`
   or `document` while rendering — only inside effects and event handlers.
 - **Service pages:** one page per service at `/kitchens/`, `/wardrobes/`, `/gypsum-ceilings/`, `/tv-wall-panels/`,
-  `/curtains/`, `/recliner-sofas/`, `/sofas/` and `/arabic-sofas/`, so each service can rank for its own searches.
+  `/curtains/`, `/recliner-sofas/`, `/sofas/`, `/arabic-sofas/` and `/spc-flooring/`, so each service can rank for its own searches.
   Content, titles and descriptions live in `src/data/servicePages.ts`; the layout is `src/components/ServicePage.tsx`.
   The build writes each one to `dist/<slug>/index.html` with its own title, description, canonical URL, link-preview
   image (`dist/og/<slug>.jpg`, cropped from the lead photo) and Service, BreadcrumbList and FAQPage JSON-LD.

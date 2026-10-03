@@ -11,6 +11,7 @@ export type CategoryId =
   | 'sofas'
   | 'arabic'
   | 'office'
+  | 'flooring'
   | 'installations'
 
 export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
@@ -23,6 +24,7 @@ export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
   { id: 'recliners', label: 'Recliners', title: 'Recliner Sofas' },
   { id: 'sofas', label: 'Sofas', title: 'Elegant Sofas' },
   { id: 'arabic', label: 'Arabic Designs', title: 'Arabic Sofa Designs' },
+  { id: 'flooring', label: 'SPC Flooring', title: 'SPC Flooring' },
   { id: 'office', label: 'Office Furniture', title: 'Office Furniture' },
   { id: 'installations', label: 'Installations', title: 'Supply & Fitting' },
 ]
@@ -131,6 +133,8 @@ const CURTAINS = group('curtains', [
 ])
 
 const SOFAS = group('sofas', [
+  ['sofa-lshape-tan', 'Tan leather-look L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa'],
+  ['02-0002', 'Charcoal-grey fabric L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa'],
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
   ['0056', 'Curved cream boucle sofa'],
@@ -192,7 +196,7 @@ const ARABIC = group('arabic', [
   ['0242', 'Champagne Arabic-style sofa set with gold-accented base', ['sofas'], 'Romance'],
   ['24-0016', 'Royal-style ivory and gold sofa set', ['sofas']],
   ['0033', 'Royal-style sofa set with carved white coffee tables', ['sofas']],
-  ['0241', 'Grey tufted Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
+  ['0241', 'Silver-grey velvet Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
   ['0099', 'Royal-style grey loveseat with carved black frame and gold cushions', ['sofas']],
   ['0244', 'Emerald and cream Arabic-style living room sofa set', ['sofas'], 'Nevada Sofa Bed'],
   ['24-0030', 'Royal-style grey velvet loveseat with carved black and gold frame', ['sofas']],
@@ -259,6 +263,16 @@ const RODS = group('rods', [
   ['24-0035', 'White double curtain track section'],
 ])
 
+const FLOORING = group('flooring', [
+  ['02-0003', 'Bright room with warm oak-look SPC flooring and a bronze curtain rod'],
+  ['02-0008', 'SPC flooring sample board in warm oak, honey, chestnut and birch wood-look finishes'],
+  ['02-0009', 'SPC flooring sample board in greys, white-washed oak and dark walnut finishes'],
+  ['02-0007', 'SPC flooring plank in a warm honey-oak finish'],
+  ['02-0006', 'SPC flooring plank in a light natural-oak finish'],
+  ['02-0004', 'SPC flooring plank in a pale white-washed oak finish'],
+  ['02-0005', 'SPC flooring plank in a soft grey oak finish'],
+])
+
 const OFFICE = group('office', [
   ['0238', 'Executive office desk with white pedestal and oak top'],
   ['0235', 'Executive office desk in mahogany finish with leather chair'],
@@ -282,6 +296,7 @@ function interleave(groups: Photo[][]) {
 
 export const PHOTOS: Photo[] = [
   ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, ARABIC, TV_PANELS, RECLINERS, GYPSUM, RODS]),
+  ...FLOORING,
   ...OFFICE,
 ]
 

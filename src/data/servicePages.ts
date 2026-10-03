@@ -376,9 +376,9 @@ export const SERVICE_PAGES: ServicePage[] = [
     service: service('sofas'),
     categories: ['sofas'],
     short: 'Sofas',
-    title: 'Modern Sofas, Sectionals & Armchairs in Kenya | Paiza',
+    title: 'Modern Sofas, L-Shape Sofas & Armchairs in Kenya | Paiza',
     description:
-      'L-shaped sectionals, chaise sofas, sofa beds, two-seaters and accent armchairs from Paiza Investment Ltd, Kikuyu. Browse the range and WhatsApp us.',
+      'L-shape sofas, sectionals, chaise sofas, sofa beds and accent armchairs from Paiza Investment Ltd, Kikuyu. Browse the range and WhatsApp us.',
     h1: ['Elegant sofa', 'designs.'],
     intro: [
       'Your sofa is where family life happens. Paiza Investment Ltd offers sectionals, chaise sofas and accent chairs in rich fabrics — modern shapes built for real family living.',
@@ -386,10 +386,10 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     optionsTitle: 'Sofa styles in our range',
     options: [
+      { title: 'Simple L-shape sofa', text: 'A 4-seater L-shaped sofa with a chaise and channel-stitched seats, in tan leather-look or grey fabric.' },
       { title: 'L-shaped sectionals', text: 'Large corner sofas that seat the whole family.' },
       { title: 'Chaise sofas', text: 'Sectionals with a chaise for stretching out.' },
       { title: 'Two-seaters', text: 'Compact sofas for smaller rooms, bedrooms and apartments.' },
-      { title: 'Sofa beds', text: 'Sofas that open out into a bed for guests.' },
       { title: 'Accent armchairs', text: 'Statement chairs to complete a living room.' },
       { title: 'Royal and Arabic designs', text: 'Carved frames, velvet and gold details — see our Arabic sofa page.' },
     ],
@@ -410,6 +410,10 @@ export const SERVICE_PAGES: ServicePage[] = [
       { heading: 'Sofas in Kikuyu, Nairobi and across Kenya', paragraphs: [WHERE] },
     ],
     faqs: [
+      {
+        q: 'What colours does the simple L-shape sofa come in?',
+        a: 'Our photos show the simple L-shape sofa, a 4-seater with a chaise, in tan leather-look and grey fabric. Message us on WhatsApp to ask about colours and get a quotation.',
+      },
       {
         q: 'Do you have sofa beds?',
         a: 'Yes. Our range includes sofa beds, such as the Nevada Sofa Bed.',
@@ -483,6 +487,61 @@ export const SERVICE_PAGES: ServicePage[] = [
         q: 'How do I order an Arabic sofa set?',
         a: 'Send us a WhatsApp message on 0792 680 757 with the model name or a photo and we will share the details and a quotation.',
       },
+    ],
+  },
+  {
+    slug: 'spc-flooring',
+    service: service('flooring'),
+    categories: ['flooring'],
+    short: 'SPC Flooring',
+    title: 'SPC Flooring in Kenya — Waterproof Wood-Look Floors | Paiza',
+    description:
+      'Modern SPC flooring from Paiza Investment Ltd: waterproof, fire-resistant and durable, in warm wood, grey and walnut finishes. WhatsApp us for a quote.',
+    h1: ['SPC flooring,', 'modern and durable.'],
+    intro: [
+      'A new floor changes the whole room. Paiza Investment Ltd offers modern, high-quality SPC flooring that brings the warmth of wood with a finish built for everyday life: waterproof, fire-resistant and durable.',
+      'Choose from warm oak, honey and chestnut tones, cool greys and white-washed woods, or rich dark walnut.',
+    ],
+    optionsTitle: 'Why choose SPC flooring',
+    options: [
+      { title: 'Waterproof', text: 'Spills and mopping are no problem, which makes it a good fit for kitchens and busy living areas.' },
+      { title: 'Fire-resistant', text: 'A rigid, stone-based core for added peace of mind at home and at work.' },
+      { title: 'Durable', text: 'A hard-wearing surface made for family homes, offices and high-traffic rooms.' },
+      { title: 'Wood-look elegance', text: 'Realistic wood grain in light, mid and dark tones, without the upkeep of real timber.' },
+      { title: 'Warm and cool tones', text: 'Oak, honey and chestnut for warmth; greys and white-wash for a modern, airy look.' },
+      { title: 'Matches the whole room', text: 'Pair it with our kitchens, wardrobes, TV walls and curtains for one finished design.' },
+    ],
+    sections: [
+      {
+        heading: 'What is SPC flooring?',
+        paragraphs: [
+          'SPC stands for stone plastic composite. Each plank has a rigid core made mainly from stone powder, a printed wood-grain layer and a protective top layer. The result looks like wood but stands up to water and daily wear far better.',
+          'SPC planks usually click together, so a new floor can often be laid over an existing flat floor. Share a photo of your room and we will advise what suits your space.',
+        ],
+      },
+      {
+        heading: 'Choosing your colour',
+        paragraphs: [
+          'Light oak and grey tones make small rooms feel bigger and brighter. Honey and chestnut add warmth to living rooms and bedrooms, while dark walnut gives a rich, formal finish.',
+          'You can see our colour range in the photos on this page. Ask us on WhatsApp for the full sample list and pictures of the floors laid in a room.',
+        ],
+      },
+      { heading: 'SPC flooring in Kikuyu, Nairobi and across Kenya', paragraphs: [WHERE] },
+    ],
+    faqs: [
+      {
+        q: 'Is SPC flooring waterproof?',
+        a: 'Yes. Our SPC flooring is waterproof, so it handles spills and mopping, including in kitchens.',
+      },
+      {
+        q: 'What colours are available?',
+        a: 'We have warm oak, honey and chestnut tones, greys and white-washed woods, and dark walnut. Message us on WhatsApp for the full sample list.',
+      },
+      {
+        q: 'Can I see samples before I order?',
+        a: 'Yes. Ask us on WhatsApp and we will send pictures of the samples, or visit our showroom in Kikuyu Town to talk through the options.',
+      },
+      { q: 'How do I get a flooring quotation?', a: QUOTE_A },
     ],
   },
 ]
