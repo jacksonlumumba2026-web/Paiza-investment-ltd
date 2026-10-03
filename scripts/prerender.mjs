@@ -51,21 +51,6 @@ await writeFile('dist/index.html', inject(template, render('/')).replace('</head
 await mkdir('dist/og', { recursive: true })
 const pagePhotos = (page) => PHOTOS.filter((p) => p.cats.some((c) => page.categories.includes(c)))
 
-/** Product + price for photos the client has priced (e.g. "KSh 13,500"), so Google can show the price. */
-const productLd = (p) => ({
-  '@type': 'Product',
-  name: p.name ?? p.alt,
-  description: p.alt,
-  image: `${SITE_URL}${p.lg}`,
-  brand: { '@type': 'Brand', name: 'Paiza Investment Ltd' },
-  offers: {
-    '@type': 'Offer',
-    price: p.price.replace(/[^\d.]/g, ''),
-    priceCurrency: 'KES',
-    seller: { '@id': `${SITE_URL}/#business` },
-  },
-})
-
 for (const page of SERVICE_PAGES) {
   const url = `${SITE_URL}/${page.slug}/`
   const cover = photoById(page.service.showcase[0])
@@ -99,7 +84,6 @@ for (const page of SERVICE_PAGES) {
           { '@type': 'ListItem', position: 3, name: page.short, item: url },
         ],
       },
-      ...pagePhotos(page).filter((p) => p.price).map(productLd),
     ],
   }
 

@@ -52,7 +52,7 @@ The domain is also written in `index.html` (canonical, link-preview and business
   Content, titles and descriptions live in `src/data/servicePages.ts`; the layout is `src/components/ServicePage.tsx`.
   The build writes each one to `dist/<slug>/index.html` with its own title, description, canonical URL, link-preview
   image (`dist/og/<slug>.jpg`, cropped from the lead photo) and Service, BreadcrumbList and FAQPage JSON-LD.
-  Keep the copy to facts the client has confirmed or the photos show — prices only where the client gave one (shown via `price` in `gallery.ts`, which also adds Product data for Google); no lead times or warranties.
+  Keep the copy to facts the client has confirmed or the photos show — no prices, lead times or warranties.
 - **Page title and description (homepage):** `index.html`. Service pages: `src/data/servicePages.ts`.
 - **Business details for Google** (`HomeAndConstructionBusiness` + `FurnitureStore`: name, phone, email, address,
   area served, services with their page URLs, logo): JSON-LD in `index.html`. Add `openingHoursSpecification` once the

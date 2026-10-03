@@ -6,7 +6,7 @@ import { SERVICES, type Service } from './services'
  * paiza-investment.co.ke/kitchens/. Each page targets its own search terms.
  *
  * Copy rule: only facts the client has confirmed or that their photos show.
- * Prices only where the client has given one; no lead times, warranties or materials we have not seen.
+ * No prices, lead times, warranties or materials we have not seen.
  */
 
 export type ServicePage = {
@@ -378,7 +378,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     short: 'Sofas',
     title: 'Modern Sofas, L-Shape Sofas & Armchairs in Kenya | Paiza',
     description:
-      'L-shape sofas from KSh 13,500, sectionals, chaise sofas, sofa beds and accent armchairs from Paiza Investment Ltd, Kikuyu. Browse and WhatsApp us.',
+      'L-shape sofas, sectionals, chaise sofas, sofa beds and accent armchairs from Paiza Investment Ltd, Kikuyu. Browse the range and WhatsApp us.',
     h1: ['Elegant sofa', 'designs.'],
     intro: [
       'Your sofa is where family life happens. Paiza Investment Ltd offers sectionals, chaise sofas and accent chairs in rich fabrics — modern shapes built for real family living.',
@@ -386,7 +386,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     optionsTitle: 'Sofa styles in our range',
     options: [
-      { title: 'Simple L-shape sofa — KSh 13,500', text: 'A 4-seater L-shaped sofa with a chaise and channel-stitched seats.' },
+      { title: 'Simple L-shape sofa', text: 'A 4-seater L-shaped sofa with a chaise and channel-stitched seats, in tan leather-look or grey fabric.' },
       { title: 'L-shaped sectionals', text: 'Large corner sofas that seat the whole family.' },
       { title: 'Chaise sofas', text: 'Sectionals with a chaise for stretching out.' },
       { title: 'Two-seaters', text: 'Compact sofas for smaller rooms, bedrooms and apartments.' },
@@ -411,8 +411,8 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     faqs: [
       {
-        q: 'How much is the simple L-shape sofa?',
-        a: 'The simple L-shape sofa, a 4-seater with a chaise, is KSh 13,500. Message us on WhatsApp to order or to ask about colours.',
+        q: 'What colours does the simple L-shape sofa come in?',
+        a: 'Our photos show the simple L-shape sofa, a 4-seater with a chaise, in tan leather-look and grey fabric. Message us on WhatsApp to ask about colours and get a quotation.',
       },
       {
         q: 'Do you have sofa beds?',

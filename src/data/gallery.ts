@@ -37,8 +37,6 @@ export type Photo = {
   alt: string
   /** Product/model name from the client, e.g. "Rixos". */
   name?: string
-  /** Price as the client gave it, e.g. "KSh 13,500". Only set when the client has confirmed it. */
-  price?: string
   cats: CategoryId[]
   w: number
   h: number
@@ -48,17 +46,16 @@ export type Photo = {
 
 const dims = meta as Record<string, { w: number; h: number }>
 
-/** [photo id, alt text, extra categories, model name, price] — the group's category is always first. */
-type Entry = [id: string, alt: string, extra?: CategoryId[], name?: string, price?: string]
+/** [photo id, alt text, extra categories, model name] — the group's category is always first. */
+type Entry = [id: string, alt: string, extra?: CategoryId[], name?: string]
 
 const group = (cat: CategoryId, entries: Entry[]): Photo[] =>
-  entries.map(([id, alt, extra = [], name, price]) => {
+  entries.map(([id, alt, extra = [], name]) => {
     if (!dims[id]) throw new Error(`Photo ${id} is missing — run "npm run images"`)
     return {
       id,
       alt: name ? `${name} — ${alt}` : alt,
       name,
-      price,
       cats: [cat, ...extra],
       w: dims[id].w,
       h: dims[id].h,
@@ -136,8 +133,8 @@ const CURTAINS = group('curtains', [
 ])
 
 const SOFAS = group('sofas', [
-  ['sofa-lshape-tan', 'Tan leather-look L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa · 4-seater', 'KSh 13,500'],
-  ['02-0002', 'Charcoal-grey fabric L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa · 4-seater', 'KSh 13,500'],
+  ['sofa-lshape-tan', 'Tan leather-look L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa'],
+  ['02-0002', 'Charcoal-grey fabric L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa'],
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
   ['0056', 'Curved cream boucle sofa'],
