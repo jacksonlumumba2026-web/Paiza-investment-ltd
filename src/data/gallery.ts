@@ -137,6 +137,7 @@ const CURTAINS = group('curtains', [
 
 const SOFAS = group('sofas', [
   ['sofa-lshape-tan', 'Tan leather-look L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa · 4-seater', 'KSh 13,500'],
+  ['02-0002', 'Charcoal-grey fabric L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa · 4-seater', 'KSh 13,500'],
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
   ['0056', 'Curved cream boucle sofa'],
@@ -198,7 +199,7 @@ const ARABIC = group('arabic', [
   ['0242', 'Champagne Arabic-style sofa set with gold-accented base', ['sofas'], 'Romance'],
   ['24-0016', 'Royal-style ivory and gold sofa set', ['sofas']],
   ['0033', 'Royal-style sofa set with carved white coffee tables', ['sofas']],
-  ['0241', 'Grey tufted Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
+  ['0241', 'Silver-grey velvet Arabic-design sofa and matching armchair with gold detailing', ['sofas'], 'Romeo'],
   ['0099', 'Royal-style grey loveseat with carved black frame and gold cushions', ['sofas']],
   ['0244', 'Emerald and cream Arabic-style living room sofa set', ['sofas'], 'Nevada Sofa Bed'],
   ['24-0030', 'Royal-style grey velvet loveseat with carved black and gold frame', ['sofas']],
@@ -265,11 +266,14 @@ const RODS = group('rods', [
   ['24-0035', 'White double curtain track section'],
 ])
 
-// Cropped from the client's WhatsApp sample boards — replace with the original photos when available.
 const FLOORING = group('flooring', [
-  ['flooring-range', 'SPC flooring colour range: warm oak, honey and chestnut tones beside greys and walnut'],
-  ['flooring-warm', 'SPC flooring samples in warm oak, honey and chestnut wood-look finishes'],
-  ['flooring-grey', 'SPC flooring samples in grey, white-wash and dark walnut wood-look finishes'],
+  ['02-0003', 'Bright room with warm oak-look SPC flooring and a bronze curtain rod'],
+  ['02-0008', 'SPC flooring sample board in warm oak, honey, chestnut and birch wood-look finishes'],
+  ['02-0009', 'SPC flooring sample board in greys, white-washed oak and dark walnut finishes'],
+  ['02-0007', 'SPC flooring plank in a warm honey-oak finish'],
+  ['02-0006', 'SPC flooring plank in a light natural-oak finish'],
+  ['02-0004', 'SPC flooring plank in a pale white-washed oak finish'],
+  ['02-0005', 'SPC flooring plank in a soft grey oak finish'],
 ])
 
 const OFFICE = group('office', [

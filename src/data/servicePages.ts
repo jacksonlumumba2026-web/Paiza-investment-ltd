@@ -523,7 +523,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         heading: 'Choosing your colour',
         paragraphs: [
           'Light oak and grey tones make small rooms feel bigger and brighter. Honey and chestnut add warmth to living rooms and bedrooms, while dark walnut gives a rich, formal finish.',
-          'Our colour range is shown below. Ask us on WhatsApp for the full sample list and pictures of the floors laid in a room.',
+          'You can see our colour range in the photos on this page. Ask us on WhatsApp for the full sample list and pictures of the floors laid in a room.',
         ],
       },
       { heading: 'SPC flooring in Kikuyu, Nairobi and across Kenya', paragraphs: [WHERE] },

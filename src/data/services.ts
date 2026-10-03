@@ -114,8 +114,8 @@ export const SERVICES: Service[] = [
       'Modern, high-quality SPC flooring — waterproof, fire-resistant and durable, in warm wood, grey and walnut finishes.',
     message: quote('SPC Flooring'),
     category: 'flooring',
-    cover: 'flooring-range',
-    showcase: ['flooring-range', 'flooring-warm', 'flooring-grey'],
+    cover: '02-0003',
+    showcase: ['02-0003', '02-0008', '02-0009'],
     galleryLabel: 'View flooring colours',
   },
 ]
