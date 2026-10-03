@@ -174,6 +174,9 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
                   {photo.name}
                 </p>
               )}
+              {photo.price && (
+                <p className="mt-1 mb-1 inline-block rounded-full bg-gold px-3 py-1 text-sm font-extrabold text-ink">{photo.price}</p>
+              )}
               <p className="text-sm text-white/55">{photo.name ? photo.alt.replace(`${photo.name} — `, '') : photo.alt}</p>
             </div>
             <div className="flex items-center gap-3">
@@ -200,7 +203,7 @@ export default function Lightbox({ state, onClose }: { state: LightboxState; onC
               <a
                 href={waLink(
                   `Hello Paiza Investment Ltd, I saw this design on your website (${
-                    photo.name ? `${photo.name}, ` : ''
+                    photo.name ? `${photo.name}${photo.price ? ` at ${photo.price}` : ''}, ` : ''
                   }${categoryTitle(photo.cats[0])}, photo ${photo.id}). I would like to get more information and a quotation.`,
                 )}
                 target="_blank"

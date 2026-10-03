@@ -11,6 +11,7 @@ export type CategoryId =
   | 'sofas'
   | 'arabic'
   | 'office'
+  | 'flooring'
   | 'installations'
 
 export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
@@ -23,6 +24,7 @@ export const CATEGORIES: { id: CategoryId; label: string; title: string }[] = [
   { id: 'recliners', label: 'Recliners', title: 'Recliner Sofas' },
   { id: 'sofas', label: 'Sofas', title: 'Elegant Sofas' },
   { id: 'arabic', label: 'Arabic Designs', title: 'Arabic Sofa Designs' },
+  { id: 'flooring', label: 'SPC Flooring', title: 'SPC Flooring' },
   { id: 'office', label: 'Office Furniture', title: 'Office Furniture' },
   { id: 'installations', label: 'Installations', title: 'Supply & Fitting' },
 ]
@@ -35,6 +37,8 @@ export type Photo = {
   alt: string
   /** Product/model name from the client, e.g. "Rixos". */
   name?: string
+  /** Price as the client gave it, e.g. "KSh 13,500". Only set when the client has confirmed it. */
+  price?: string
   cats: CategoryId[]
   w: number
   h: number
@@ -44,16 +48,17 @@ export type Photo = {
 
 const dims = meta as Record<string, { w: number; h: number }>
 
-/** [photo id, alt text, extra categories, model name] — the group's category is always first. */
-type Entry = [id: string, alt: string, extra?: CategoryId[], name?: string]
+/** [photo id, alt text, extra categories, model name, price] — the group's category is always first. */
+type Entry = [id: string, alt: string, extra?: CategoryId[], name?: string, price?: string]
 
 const group = (cat: CategoryId, entries: Entry[]): Photo[] =>
-  entries.map(([id, alt, extra = [], name]) => {
+  entries.map(([id, alt, extra = [], name, price]) => {
     if (!dims[id]) throw new Error(`Photo ${id} is missing — run "npm run images"`)
     return {
       id,
       alt: name ? `${name} — ${alt}` : alt,
       name,
+      price,
       cats: [cat, ...extra],
       w: dims[id].w,
       h: dims[id].h,
@@ -131,6 +136,7 @@ const CURTAINS = group('curtains', [
 ])
 
 const SOFAS = group('sofas', [
+  ['sofa-lshape-tan', 'Tan leather-look L-shaped sofa with chaise and channel-stitched seats', [], 'Simple L-Shape Sofa · 4-seater', 'KSh 13,500'],
   ['0221', 'Large tan L-shaped sectional sofa with scatter cushions'],
   ['0196', 'Cream L-shaped sectional with glass coffee table'],
   ['0056', 'Curved cream boucle sofa'],
@@ -259,6 +265,13 @@ const RODS = group('rods', [
   ['24-0035', 'White double curtain track section'],
 ])
 
+// Cropped from the client's WhatsApp sample boards — replace with the original photos when available.
+const FLOORING = group('flooring', [
+  ['flooring-range', 'SPC flooring colour range: warm oak, honey and chestnut tones beside greys and walnut'],
+  ['flooring-warm', 'SPC flooring samples in warm oak, honey and chestnut wood-look finishes'],
+  ['flooring-grey', 'SPC flooring samples in grey, white-wash and dark walnut wood-look finishes'],
+])
+
 const OFFICE = group('office', [
   ['0238', 'Executive office desk with white pedestal and oak top'],
   ['0235', 'Executive office desk in mahogany finish with leather chair'],
@@ -282,6 +295,7 @@ function interleave(groups: Photo[][]) {
 
 export const PHOTOS: Photo[] = [
   ...interleave([KITCHENS, CURTAINS, SOFAS, WARDROBES, ARABIC, TV_PANELS, RECLINERS, GYPSUM, RODS]),
+  ...FLOORING,
   ...OFFICE,
 ]
 

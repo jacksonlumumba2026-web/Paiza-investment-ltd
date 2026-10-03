@@ -113,10 +113,10 @@ export default function Services() {
         </div>
 
         <p className="mt-10 text-sm font-semibold text-ink/70 sm:hidden">Swipe to see all {SERVICES.length} services →</p>
-        {/* Phones: a swipeable row instead of eight stacked cards. Larger screens: a grid. */}
+        {/* Phones: a swipeable row instead of stacked cards. Larger screens: a grid. */}
         <Stagger
           gap={0.08}
-          className="scrollbar-none -mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pt-2 pb-8 sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:mt-20 lg:gap-7 xl:grid-cols-4"
+          className="scrollbar-none -mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pt-2 pb-8 sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:mt-20 lg:grid-cols-3 lg:gap-7"
         >
           {SERVICES.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />

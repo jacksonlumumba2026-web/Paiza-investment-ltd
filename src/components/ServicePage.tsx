@@ -75,10 +75,10 @@ function PageHero({ page }: { page: Page }) {
 
           <m.ul
             {...line(0.7)}
-            className="mt-10 flex flex-col gap-3 text-[12px] font-semibold tracking-[0.18em] text-white/55 uppercase sm:flex-row sm:flex-wrap sm:gap-x-6"
+            className="mt-10 flex flex-col gap-3 text-[12px] font-semibold tracking-[0.18em] text-white/55 uppercase sm:flex-row sm:flex-wrap sm:gap-x-4"
           >
             {['Showroom in Kikuyu', 'Mombasa Rd branch', 'Supply & fitting countrywide'].map((t, i) => (
-              <li key={t} className="flex items-center gap-6">
+              <li key={t} className="flex items-center gap-4">
                 {i > 0 && <span className="hidden h-1 w-1 rounded-full bg-ember sm:block" />}
                 {t}
               </li>
@@ -214,18 +214,6 @@ function Related({ page }: { page: Page }) {
               </m.li>
             )
           })}
-          <m.li variants={fadeUp}>
-            <a
-              href="/#services"
-              className="flex aspect-[4/5] flex-col justify-between rounded-[22px] bg-ink p-5 text-white transition-colors hover:bg-graphite"
-            >
-              <span className="font-serif text-4xl text-gold italic">All</span>
-              <span className="flex items-end justify-between gap-2 text-lg font-extrabold tracking-tight">
-                All services
-                <IconArrowUpRight className="h-5 w-5 shrink-0 text-gold" />
-              </span>
-            </a>
-          </m.li>
         </Stagger>
       </div>
     </section>
